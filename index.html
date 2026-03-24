@@ -2060,10 +2060,10 @@
 
     /* ── 3) 체크리스트 방문지 확대 + 가독성 개선 ── */
     .cl-venue { font-size: 14px; font-weight: 800; display: block; margin-bottom: 3px; margin-right: 0; }
-    .cl-text { font-size: 13px; line-height: 1.6; }
+    .cl-text { font-size: 13px; line-height: 1.6; flex: 1; min-width: 0; word-break: keep-all; overflow-wrap: break-word; }
     .cl-num { font-size: 13px; }
-    .cl-item { flex-wrap: wrap; gap: 8px; padding: 12px 12px; align-items: flex-start; }
-    .cl-detail-btn { margin-left: 0; font-size: 11px; padding: 3px 8px; }
+    .cl-item { flex-wrap: nowrap; gap: 10px; padding: 12px 12px; align-items: flex-start; }
+    .cl-detail-btn { flex-shrink: 0; align-self: flex-start; margin-left: 0; font-size: 11px; padding: 4px 8px; }
     .cl-cb { margin-top: 2px; flex-shrink: 0; }
   }
 
