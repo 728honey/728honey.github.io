@@ -2008,7 +2008,22 @@
     .dm-content { font-size: 13px; line-height: 1.8; }
     .ip-quote { font-size: 14px; line-height: 1.85; padding: 14px 14px 14px 22px; }
 
-    /* ── 일정표 모바일 탭 UI ── */
+    /* ── 체크리스트 모바일 탭 UI ── */
+    .cl-group { display: none; }
+    .cl-group.cl-active { display: block; }
+    .cl-tab-bar {
+      display: flex; gap: 6px; margin-bottom: 12px;
+    }
+    .cl-tab-btn {
+      flex: 1; padding: 9px 4px; border: none; border-radius: 8px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px;
+      color: #fff; opacity: 0.5; transition: opacity 0.15s;
+    }
+    .cl-tab-btn.active { opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .cl-tab-btn.d1 { background: #2a5298; }
+    .cl-tab-btn.d2 { background: var(--lg-red); }
+    .cl-tab-btn.d3 { background: #c17f24; }
     .schedule-wrap { overflow-x: visible; margin: 0; padding: 0; }
     .schedule-grid { display: block; min-width: unset; }
     .sch-card { display: none; }
@@ -2664,6 +2679,12 @@
             <div class="progress-sub" id="cl-prog-sub">체크박스를 클릭하여 완료 여부를 기록하세요.</div>
           </div>
     <div class="cl-intro">현장에서 직접 확인하실 항목입니다. 완료 후 체크하여 주시기 바랍니다.</div>
+    <!-- 모바일 탭 바 -->
+    <div class="cl-tab-bar" id="clTabBar" style="display:none;">
+      <button class="cl-tab-btn d1 active" onclick="switchClTab(0)">DAY 1</button>
+      <button class="cl-tab-btn d2" onclick="switchClTab(1)">DAY 2</button>
+      <button class="cl-tab-btn d3" onclick="switchClTab(2)">DAY 3</button>
+    </div>
 
     <div class="cl-group">
       <div class="cl-day-bar cl-d1">DAY 1 · 4/23 (목)</div>
@@ -4259,7 +4280,30 @@
 
 
 <script>
-/* ── 모바일 일정표 탭 ── */
+/* ── 모바일 체크리스트 탭 ── */
+function initClTabs() {
+  var isMobile = window.innerWidth <= 640;
+  var tabBar = document.getElementById('clTabBar');
+  var groups = document.querySelectorAll('.cl-group');
+  if (!tabBar) return;
+  if (isMobile) {
+    tabBar.style.display = 'flex';
+    groups.forEach(function(g, i) {
+      g.classList.toggle('cl-active', i === 0);
+    });
+  } else {
+    tabBar.style.display = 'none';
+    groups.forEach(function(g) { g.classList.remove('cl-active'); g.style.display = ''; });
+  }
+}
+window.switchClTab = function(idx) {
+  var groups = document.querySelectorAll('.cl-group');
+  var btns = document.querySelectorAll('.cl-tab-btn');
+  groups.forEach(function(g, i) { g.classList.toggle('cl-active', i === idx); });
+  btns.forEach(function(b, i) { b.classList.toggle('active', i === idx); });
+};
+window.addEventListener('load', initClTabs);
+window.addEventListener('resize', initClTabs);
 function initSchTabs() {
   var isMobile = window.innerWidth <= 640;
   var tabBar = document.getElementById('schTabBar');
