@@ -2008,7 +2008,25 @@
     .dm-content { font-size: 13px; line-height: 1.8; }
     .ip-quote { font-size: 14px; line-height: 1.85; padding: 14px 14px 14px 22px; }
 
-    /* ── 13. 일정표 힌트 ── */
+    /* ── 일정표 모바일 탭 UI ── */
+    .schedule-wrap { overflow-x: visible; margin: 0; padding: 0; }
+    .schedule-grid { display: block; min-width: unset; }
+    .sch-card { display: none; }
+    .sch-card.sch-active { display: block; }
+    .sch-tab-bar {
+      display: flex; gap: 6px; margin-bottom: 12px;
+    }
+    .sch-tab-btn {
+      flex: 1; padding: 9px 4px; border: none; border-radius: 8px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px;
+      color: #fff; opacity: 0.5; transition: opacity 0.15s;
+    }
+    .sch-tab-btn.active { opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .sch-tab-btn.d1 { background: #2a5298; }
+    .sch-tab-btn.d2 { background: var(--lg-red); }
+    .sch-tab-btn.d3 { background: #c17f24; }
+    .sch-tab-btn.d4 { background: #2d6a4f; }
     .sch-hint { font-size: 12px; padding: 6px 10px; }
     .sch-name { font-size: 13px; }
     .sch-sub { font-size: 12px; }
@@ -2505,6 +2523,13 @@
         <!-- 일정표 -->
     <div class="schedule-label">📅 일정표</div>
     <div class="sch-hint">👆 방문지 명칭을 선택하시면 상세 내용을 확인하실 수 있습니다.</div>
+    <!-- 모바일 탭 바 (JS로 모바일만 표시) -->
+    <div class="sch-tab-bar" id="schTabBar" style="display:none;">
+      <button class="sch-tab-btn d1 active" onclick="switchSchTab(1)">DAY 1</button>
+      <button class="sch-tab-btn d2" onclick="switchSchTab(2)">DAY 2</button>
+      <button class="sch-tab-btn d3" onclick="switchSchTab(3)">DAY 3</button>
+      <button class="sch-tab-btn d4" onclick="switchSchTab(4)">DAY 4</button>
+    </div>
     <div class="schedule-wrap">
       <div class="schedule-grid">
 
@@ -4232,6 +4257,33 @@
   }, { passive: true });
 </script>
 
+
+<script>
+/* ── 모바일 일정표 탭 ── */
+function initSchTabs() {
+  var isMobile = window.innerWidth <= 640;
+  var tabBar = document.getElementById('schTabBar');
+  var cards = document.querySelectorAll('.sch-card');
+  if (!tabBar) return;
+  if (isMobile) {
+    tabBar.style.display = 'flex';
+    cards.forEach(function(c, i) {
+      c.classList.toggle('sch-active', i === 0);
+    });
+  } else {
+    tabBar.style.display = 'none';
+    cards.forEach(function(c) { c.classList.remove('sch-active'); c.style.display = ''; });
+  }
+}
+window.switchSchTab = function(day) {
+  var cards = document.querySelectorAll('.sch-card');
+  var btns = document.querySelectorAll('.sch-tab-btn');
+  cards.forEach(function(c, i) { c.classList.toggle('sch-active', i === day - 1); });
+  btns.forEach(function(b, i) { b.classList.toggle('active', i === day - 1); });
+};
+window.addEventListener('load', initSchTabs);
+window.addEventListener('resize', initSchTabs);
+</script>
 
 </body>
 </html>
