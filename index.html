@@ -1934,6 +1934,31 @@
   }
   .nav-tab .nav-tab-icon { font-size: 14px; }
 
+  /* ══════════════════════════════
+     MOBILE ONLY (max-width: 640px)
+  ══════════════════════════════ */
+  @media (max-width: 640px) {
+    /* 1. 로고바 한 줄 */
+    .lg-text { font-size: 11px; letter-spacing: 0; }
+    .logo-bar-right { font-size: 11px; letter-spacing: 0; }
+    .lg-circle { width: 26px; height: 26px; font-size: 12px; }
+    .logo-bar { padding: 10px 14px; }
+
+    /* 3. 날씨 2×2 그리드 */
+    .weather-grid { grid-template-columns: repeat(2, 1fr); }
+    .prep-panel { overflow-x: hidden !important; overflow-y: auto !important; }
+
+    /* 4. 이전/확인완료/다음 버튼 축소 */
+    .prep-check-btn { font-size: 12px; padding: 5px 9px; }
+    .prep-check-btn .check-icon { font-size: 12px; }
+    .prep-next-btn { font-size: 12px; padding: 5px 9px; }
+    .prep-check-bar { gap: 4px; }
+    .prep-check-bar-right { gap: 4px; }
+
+    /* 6. 서베이 드로어 풀스크린 */
+    .survey-drawer { width: 100vw !important; max-width: 100vw !important; border-radius: 0 !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -1966,12 +1991,14 @@
 
   <!-- ══ 상단 네비 탭바 ══ -->
   <div class="nav-tabbar" id="navTabbar">
+    <button id="nav-arr-left" onclick="scrollNavTab(-1)" style="display:none;flex-shrink:0;background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:16px;padding:0 8px;cursor:pointer;">◀</button>
     <div class="nav-tab" id="ntab-mac-0" onclick="navTabClick('mac-0')"><span class="nav-tab-icon">📋</span>사전 준비</div>
     <div class="nav-tab" id="ntab-mac-1" onclick="navTabClick('mac-1')"><span class="nav-tab-icon">🗺</span>프로그램</div>
     <div class="nav-tab" id="ntab-mac-2" onclick="navTabClick('mac-2')"><span class="nav-tab-icon">📅</span>일정표</div>
     <div class="nav-tab" id="ntab-mac-4" onclick="navTabClick('mac-4')"><span class="nav-tab-icon">✅</span>현장 미션</div>
     <div class="nav-tab" id="ntab-mac-5" onclick="navTabClick('mac-5')"><span class="nav-tab-icon">💬</span>기이수자 인사이트</div>
     <div class="nav-tab" id="ntab-mac-3" onclick="openSurveyDrawer()"><span class="nav-tab-icon">📝</span>사전 Survey</div>
+    <button id="nav-arr-right" onclick="scrollNavTab(1)" style="display:none;flex-shrink:0;background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:16px;padding:0 8px;cursor:pointer;">▶</button>
   </div>
 
 
@@ -4146,6 +4173,49 @@
       }
     }
   }, { passive: true });
+</script>
+
+<script>
+/* ── 모바일 전용 네비탭 화살표 ── */
+(function() {
+  function isMobile() { return window.innerWidth <= 640; }
+  function updateNavArrows() {
+    if (!isMobile()) return;
+    var tb = document.getElementById('navTabbar');
+    var left = document.getElementById('nav-arr-left');
+    var right = document.getElementById('nav-arr-right');
+    if (!tb || !left || !right) return;
+    left.style.display = 'flex';
+    right.style.display = 'flex';
+  }
+  window.scrollNavTab = function(dir) {
+    var tb = document.getElementById('navTabbar');
+    if (!tb) return;
+    tb.scrollBy({ left: dir * 100, behavior: 'smooth' });
+  };
+  window.addEventListener('load', updateNavArrows);
+  window.addEventListener('resize', updateNavArrows);
+})();
+
+/* ── 모바일 일정표 좌우 화살표 ── */
+(function() {
+  function isMobile() { return window.innerWidth <= 640; }
+  function injectScheduleArrows() {
+    if (!isMobile()) return;
+    document.querySelectorAll('.schedule-wrap').forEach(function(wrap) {
+      if (wrap.querySelector('.sch-arr')) return;
+      var bar = document.createElement('div');
+      bar.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:4px 0 6px;';
+      bar.innerHTML =
+        '<button class="sch-arr" onclick="this.closest(\'.schedule-wrap\').scrollBy({left:-220,behavior:\'smooth\'})" style="background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:13px;cursor:pointer;color:var(--text-muted);">◀ 이전</button>' +
+        '<span style="font-size:11px;color:var(--text-muted);">← 옆으로 스크롤 →</span>' +
+        '<button class="sch-arr" onclick="this.closest(\'.schedule-wrap\').scrollBy({left:220,behavior:\'smooth\'})" style="background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:13px;cursor:pointer;color:var(--text-muted);">다음 ▶</button>';
+      wrap.parentNode.insertBefore(bar, wrap);
+    });
+  }
+  window.addEventListener('load', injectScheduleArrows);
+  window.addEventListener('resize', injectScheduleArrows);
+})();
 </script>
 
 </body>
