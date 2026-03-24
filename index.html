@@ -896,7 +896,7 @@
     padding: 9px 13px;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
@@ -948,15 +948,20 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 8px 10px;
+    padding: 10px 12px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
   }
-  .weather-date { font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; font-family: 'DM Sans',sans-serif; }
-  .weather-temp-inline { font-size: 12px; font-weight: 800; color: var(--text); display: inline; margin-left: 4px; }
-  .weather-date-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-  .weather-icon-row { display: flex; align-items: center; gap: 5px; }
-  .weather-icon { font-size: 18px; flex-shrink: 0; }
-  .weather-cond { font-size: 11px; color: var(--text-muted); }
+  .weather-date { font-size: 13px; font-weight: 700; color: var(--text-muted); font-family: 'DM Sans',sans-serif; }
+  .weather-temp-inline { font-size: 13px; font-weight: 800; color: var(--text); display: block; text-align: right; margin-bottom: 6px; }
+  .weather-date-row { display: flex; flex-direction: column; align-items: flex-end; }
+  .weather-icon-row { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
+  .weather-icon { font-size: 19px; flex-shrink: 0; }
+  .weather-cond { font-size: 12px; color: var(--text-muted); }
+  .weather-bottom-row { display: none; }
   .weather-note { font-size: 11px; color: var(--text-light); text-align: right; margin-top: 3px; }
   /* 기존 개별 요소 숨김 */
   .weather-temp { display: none; }
@@ -1270,12 +1275,12 @@
 
   /* ══ VISIT POPUP ══ */
   .vp-overlay {
-    display: none; position: fixed; inset: 0;
+    display: none; position: fixed; inset: 0; pointer-events:none;
     background: rgba(0,0,0,0.6); z-index: 9999;
     align-items: center; justify-content: center;
     padding: 20px; backdrop-filter: blur(4px);
   }
-  .vp-overlay.open { display: flex; }
+  .vp-overlay.open { display: flex; pointer-events:auto; }
   .vp-box {
     background: #fff; border-radius: 20px;
     width: 100%; max-width: 560px; max-height: 86vh;
@@ -1413,12 +1418,12 @@
 
   /* ── 상세 미션 팝업 ── */
   .dm-overlay {
-    display: none; position: fixed; inset: 0;
+    display: none; position: fixed; inset: 0; pointer-events:none;
     background: rgba(0,0,0,0.58); z-index: 10000;
     align-items: center; justify-content: center;
     padding: 20px; backdrop-filter: blur(4px);
   }
-  .dm-overlay.open { display: flex; }
+  .dm-overlay.open { display: flex; pointer-events:auto; }
   .dm-box {
     background: #fff; border-radius: 20px;
     width: 100%; max-width: 580px; max-height: 88vh;
@@ -1608,26 +1613,25 @@
   .insight-row-meta { font-size: 16px; color: var(--text-muted); margin-bottom: 4px; }
   .insight-row-summary {
     font-size: 15.5px; font-weight: 700; color: var(--text);
-    line-height: 1.55;
-    white-space: normal; word-break: keep-all;
+    line-height: 1.55; word-break: keep-all;
   }
   .insight-row-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
-  .insight-row-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; transition: transform 0.15s; }
+  .insight-row-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; transition: transform 0.15s; display: block; }
   .insight-row:hover .insight-row-arrow { transform: translateX(3px); color: var(--lg-red); }
   .insight-tag {
-    font-size: 16px; font-weight: 600; padding: 2px 8px;
+    font-size: 11px; font-weight: 600; padding: 2px 8px;
     border-radius: 20px; background: #fdf2f5; color: var(--lg-red);
     border: 1px solid #f9c6d2;
   }
 
   /* 인사이트 팝업 */
   .ip-overlay {
-    display: none; position: fixed; inset: 0;
+    display: none; position: fixed; inset: 0; pointer-events:none;
     background: rgba(0,0,0,0.55); z-index: 10001;
     align-items: center; justify-content: center;
     padding: 20px; backdrop-filter: blur(4px);
   }
-  .ip-overlay.open { display: flex; }
+  .ip-overlay.open { display: flex; pointer-events:auto; }
   .ip-box {
     background: #fff; border-radius: 20px;
     width: 100%; max-width: 540px; max-height: 88vh;
@@ -1684,9 +1688,12 @@
   .prep-tab-done.show { display: block; }
 
   .prep-check-bar {
-    display: flex; align-items: center; justify-content: flex-end;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 10px 0 0;
     gap: 8px;
+  }
+  .prep-check-bar-right {
+    display: flex; align-items: center; gap: 8px;
   }
   .prep-check-btn {
     display: flex; align-items: center; gap: 6px;
@@ -1856,6 +1863,10 @@
     color: var(--lg-red);
     background: #fdf2f5;
   }
+  .prep-next-btn:first-child:not(:last-child) {
+    color: var(--text-muted);
+    background: #f4f5f7;
+  }
 
 
   /* ── 상세미션 bullet 리스트 ── */
@@ -1960,7 +1971,7 @@
     <div class="nav-tab" id="ntab-mac-2" onclick="navTabClick('mac-2')"><span class="nav-tab-icon">📅</span>일정표</div>
     <div class="nav-tab" id="ntab-mac-4" onclick="navTabClick('mac-4')"><span class="nav-tab-icon">✅</span>현장 미션</div>
     <div class="nav-tab" id="ntab-mac-5" onclick="navTabClick('mac-5')"><span class="nav-tab-icon">💬</span>기이수자 인사이트</div>
-    <div class="nav-tab" id="ntab-mac-3" onclick="navTabClick('mac-3')"><span class="nav-tab-icon">📝</span>사전 Survey</div>
+    <div class="nav-tab" id="ntab-mac-3" onclick="openSurveyDrawer()"><span class="nav-tab-icon">📝</span>사전 Survey</div>
   </div>
 
 
@@ -2014,47 +2025,35 @@
     <!-- ① 날씨·옷차림 -->
     <div class="prep-panel active" id="prep-0">
       <div class="weather-notice">
-        <strong>심천 날씨 (4월 하순)</strong> — 고온다습하며 스콜성 비가 잦습니다. 우산은 호텔에서 제공됩니다.
+        <strong>심천 날씨 (4월 하순)</strong> — 고온다습하며 스콜성 비가 잦습니다. 호텔에서 제공되는 우산을 사용하세요.
       </div>
       <div class="weather-grid">
         <div class="weather-card">
+          <span class="weather-date">4/23 (목)</span>
           <div class="weather-date-row">
-            <span class="weather-date">4/23 (목)</span>
             <span class="weather-temp-inline">32° / 27°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
+            <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
           </div>
         </div>
         <div class="weather-card">
+          <span class="weather-date">4/24 (금)</span>
           <div class="weather-date-row">
-            <span class="weather-date">4/24 (금)</span>
             <span class="weather-temp-inline">31° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
+            <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
           </div>
         </div>
         <div class="weather-card">
+          <span class="weather-date">4/25 (토)</span>
           <div class="weather-date-row">
-            <span class="weather-date">4/25 (토)</span>
             <span class="weather-temp-inline">30° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
+            <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
           </div>
         </div>
         <div class="weather-card">
+          <span class="weather-date">4/26 (일)</span>
           <div class="weather-date-row">
-            <span class="weather-date">4/26 (일)</span>
             <span class="weather-temp-inline">30° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌧️</span>
-            <span class="weather-cond">비</span>
+            <div class="weather-icon-row"><span class="weather-icon">🌧️</span><span class="weather-cond">비</span></div>
           </div>
         </div>
       </div>
@@ -2075,12 +2074,15 @@
       </table>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(1)">
-          다음: 결제·환율 →
-        </button>
+        <div></div>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
+            <span class="check-icon">☑</span> 확인 완료
+          </button>
+          <button class="prep-next-btn" onclick="switchPrep(1)">
+            다음: 결제·환율 →
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2112,12 +2114,11 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(2)">
-          다음: Alipay 등록 방법 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(0)">← 이전: 날씨·옷차림</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(2)">다음: Alipay 등록 방법 →</button>
+        </div>
       </div>
     </div>
 
@@ -2174,12 +2175,11 @@
       </button>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-2" onclick="togglePrepCheck(2)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(3)">
-          다음: 필수 과정 수강 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(1)">← 이전: 결제·환율</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-2" onclick="togglePrepCheck(2)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(3)">다음: 필수 과정 수강 →</button>
+        </div>
       </div>
     </div>
 
@@ -2229,12 +2229,11 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-3" onclick="togglePrepCheck(3)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(4)">
-          다음: 수하물 안내 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(2)">← 이전: Alipay 등록 방법</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-3" onclick="togglePrepCheck(3)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(4)">다음: 수하물 안내 →</button>
+        </div>
       </div>
     </div>
 
@@ -2277,12 +2276,11 @@
       </table>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(5)">
-          다음: 호텔 정보 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(3)">← 이전: 필수 과정 수강</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(5)">다음: 호텔 정보 →</button>
+        </div>
       </div>
     </div>
 
@@ -2305,12 +2303,11 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(6)">
-          다음: 입국 신고서 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(4)">← 이전: 수하물 안내</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(6)">다음: 입국 신고서 →</button>
+        </div>
       </div>
     </div>
 
@@ -2344,9 +2341,8 @@
       </table>
     
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-6" onclick="togglePrepCheck(6)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(5)">← 이전: 호텔 정보</button>
+        <button class="prep-check-btn" id="prep-chk-6" onclick="togglePrepCheck(6)"><span class="check-icon">☑</span> 확인 완료</button>
       </div>
     </div>
   </div>
@@ -2708,7 +2704,7 @@
         참가 기대사항 및 개인별 유의사항 확인을 위한 사전 설문입니다.<br>
         출발 전까지 꼭 응답해 주세요.
       </div>
-      <a href="https://surveyl.ink/jmkeB2" target="_blank" rel="noopener noreferrer" class="btn-white">설문 참여하기 →</a>
+      <button onclick="openSurveyDrawer()" class="btn-white" style="width:100%;cursor:pointer;border:none;">설문 참여하기 →</button>
     </div>
   </div>
       </div>
@@ -2733,6 +2729,108 @@
   </div>
 
 </div>
+
+  <!-- ── SURVEY DRAWER ── -->
+  <div class="survey-drawer-overlay" id="surveyDrawerOverlay" onclick="closeSurveyDrawer()"></div>
+  <div class="survey-drawer" id="surveyDrawer">
+    <div class="survey-drawer-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">📝</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:#fff;">사전 Needs Survey</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:1px;">Action Required</div>
+        </div>
+      </div>
+      <button class="survey-drawer-close" onclick="closeSurveyDrawer()">✕</button>
+    </div>
+    <div class="survey-drawer-body" style="padding:0;">
+      <iframe src="https://surveyl.ink/jmkeB2" style="width:100%;height:100%;border:none;display:block;" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <style>
+    .survey-drawer-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 8000;
+      backdrop-filter: blur(2px);
+    }
+    .survey-drawer-overlay.open { display: block; }
+
+    .survey-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      width: 50vw; max-width: 96vw; min-width: 320px;
+      height: 100vh;
+      background: #fff;
+      z-index: 8001;
+      display: flex; flex-direction: column;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.18);
+      transform: translateX(100%);
+      transition: transform 0.22s ease-out;
+    }
+    .survey-drawer.open { transform: translateX(0); }
+
+    .survey-drawer-header {
+      background: var(--lg-red);
+      padding: 18px 20px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .survey-drawer-close {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); border: none;
+      color: #fff; font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .survey-drawer-close:hover { background: rgba(255,255,255,0.35); }
+
+    .survey-drawer-body {
+      flex: 1; overflow-y: auto;
+      padding: 24px 20px;
+    }
+  </style>
+
+  <script>
+    function openSurveyDrawer() {
+      // 탭 활성화
+      document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+      document.getElementById('ntab-mac-3').classList.add('active');
+      // mac-3 아코디언 열기
+      var mac3 = document.getElementById('mac-3');
+      if (mac3 && !mac3.classList.contains('open')) {
+        mac3.classList.add('open');
+      }
+      // 스크롤 먼저, 완료 후 드로어 열기
+      var tabbar = document.getElementById('navTabbar');
+      var offset = tabbar ? tabbar.offsetHeight + 8 : 50;
+      var top = mac3 ? mac3.getBoundingClientRect().top + window.pageYOffset - offset : 0;
+
+      if (Math.abs(window.pageYOffset - top) < 10) {
+        // 이미 근처에 있으면 바로 열기
+        document.getElementById('surveyDrawer').classList.add('open');
+        document.getElementById('surveyDrawerOverlay').classList.add('open');
+      } else {
+        // 스크롤 후 드로어 열기 (스크롤 시간 고려)
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        setTimeout(function() {
+          document.getElementById('surveyDrawer').classList.add('open');
+          document.getElementById('surveyDrawerOverlay').classList.add('open');
+        }, 350);
+      }
+    }
+    function closeSurveyDrawer() {
+      document.getElementById('surveyDrawer').classList.remove('open');
+      document.getElementById('surveyDrawerOverlay').classList.remove('open');
+      document.getElementById('ntab-mac-3').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSurveyDrawer();
+    });
+  </script>
 
   <!-- ALIPAY MODAL -->
   <div class="modal-overlay" id="alipayModal" onclick="closeAlipayModal(event)">
@@ -3998,31 +4096,6 @@
     updatePrepProgress();
     updateCLProgress();
   });
-</script><script>
-  function saveDMMemo(n, el) {
-    var cnt = document.getElementById('dm-cnt-' + n);
-    if (cnt) cnt.textContent = el.value.length + '자';
-    var saved = document.getElementById('dm-saved-' + n);
-    if (saved) {
-      saved.classList.add('show');
-      clearTimeout(saved._t);
-      saved._t = setTimeout(function(){ saved.classList.remove('show'); }, 1500);
-    }
-    try { localStorage.setItem('dm-memo-' + n, el.value); } catch(e) {}
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    for (var i = 1; i <= 10; i++) {
-      try {
-        var val = localStorage.getItem('dm-memo-' + i);
-        if (val) {
-          var el = document.getElementById('dm-memo-' + i);
-          if (el) { el.value = val; }
-          var cnt = document.getElementById('dm-cnt-' + i);
-          if (cnt) cnt.textContent = val.length + '자';
-        }
-      } catch(e) {}
-    }
-  });
 </script>
 
 
@@ -4074,5 +4147,6 @@
     }
   }, { passive: true });
 </script>
+
 </body>
 </html>
