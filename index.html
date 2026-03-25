@@ -1147,6 +1147,16 @@
     padding: 6px 8px;
     margin-bottom: 4px;
     border-left: 2px solid var(--border);
+    position: relative;
+  }
+  .sch-tag {
+    font-size: 10px; font-weight: 700;
+    padding: 1px 7px; border-radius: 20px;
+    background: rgba(165,0,52,0.08);
+    color: var(--lg-red);
+    border: 1px solid rgba(165,0,52,0.2);
+    white-space: nowrap;
+    position: absolute; top: 6px; right: 7px;
   }
   .sch-num { font-size: 16px; font-weight: 700; color: var(--lg-red); font-family:'DM Sans',sans-serif; }
   .sch-name { font-size: 15.5px; font-weight: 700; color: var(--text); }
@@ -1367,7 +1377,6 @@
     border-left-color: var(--lg-red) !important;
     transform: translateX(2px);
   }
-  .sch-item-clickable:hover .sch-name { color: var(--lg-red); }
   .sch-item-clickable .sch-name::after {
     content: ' ↗';
     font-size: 16px; color: var(--text-muted);
@@ -1562,8 +1571,8 @@
     border-radius: 0 0 12px 12px;
   }
   .wrapup-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
     border-bottom: 1px solid var(--border);
     line-height: 1.65;
   }
@@ -1585,6 +1594,66 @@
   }
 
 
+
+  /* ── 가기 전 생각할 거리 ── */
+  .think-intro-box { margin: 16px 0 20px; display: flex; flex-direction: column; gap: 10px; }
+  .think-notice {
+    padding: 12px 16px; border-radius: 8px;
+    font-size: 14px; line-height: 1.75; border-left: 4px solid;
+  }
+  .think-notice.blue { background: #eff6ff; border-color: #2563eb; color: #1e3a8a; }
+  .think-notice.amber { background: #fffbeb; border-color: #f59e0b; color: #78350f; }
+  .think-card {
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .think-card-head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+  }
+  .think-av {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    color: #fff; font-size: 15px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-family: 'DM Sans', sans-serif;
+  }
+  .think-card-title { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .think-card-sub { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+  .think-card-body { padding: 14px 16px; background: #fff; }
+  .think-quote {
+    border-left: 3px solid var(--border);
+    margin: 0 0 12px; padding: 8px 14px;
+    font-size: 14px; color: var(--text); line-height: 1.75;
+    font-style: italic;
+  }
+  .think-q-box {
+    background: #fff9f0; border: 1px solid #fde68a;
+    border-radius: 8px; padding: 10px 13px; margin-bottom: 10px;
+  }
+  .think-q-label { font-size: 12px; font-weight: 700; color: #92400e; margin-bottom: 5px; }
+  .think-q-text { font-size: 13px; color: #78350f; line-height: 1.75; }
+  .think-outro {
+    background: var(--surface2); border-radius: 10px;
+    padding: 16px; margin-top: 6px;
+    border: 1px solid var(--border);
+  }
+  .think-outro-title {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.5px;
+    color: var(--text-muted); margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .think-outro-quote {
+    border-left: 3px solid var(--lg-red);
+    margin: 0 0 10px; padding: 8px 12px;
+    font-size: 13px; color: var(--text); line-height: 1.75;
+    background: #fff; border-radius: 0 6px 6px 0;
+  }
+  .think-outro-note {
+    font-size: 11px; color: var(--text-muted);
+    margin-top: 10px; line-height: 1.6;
+  }
 
   /* ── 기이수자 인사이트 ── */
   .insight-intro {
@@ -2083,7 +2152,7 @@
     <div class="nav-tab" id="ntab-mac-1" onclick="navTabClick('mac-1')"><span class="nav-tab-icon">🗺</span>프로그램</div>
     <div class="nav-tab" id="ntab-mac-2" onclick="navTabClick('mac-2')"><span class="nav-tab-icon">📅</span>일정표</div>
     <div class="nav-tab" id="ntab-mac-4" onclick="navTabClick('mac-4')"><span class="nav-tab-icon">✅</span>현장 미션</div>
-    <div class="nav-tab" id="ntab-mac-5" onclick="navTabClick('mac-5')"><span class="nav-tab-icon">💬</span>기이수자 인사이트</div>
+    <div class="nav-tab" id="ntab-mac-5" onclick="navTabClick('mac-5')"><span class="nav-tab-icon">💡</span>가기 전 생각할 거리</div>
     <div class="nav-tab" id="ntab-mac-3" onclick="openSurveyDrawer()"><span class="nav-tab-icon">📝</span>사전 Survey</div>
   </div>
 
@@ -2545,8 +2614,8 @@
             <div class="sch-time">오전</div>
             <div class="sch-flight"><strong>인천 → 심천</strong><br>KE835 08:15~11:25</div>
             <div class="sch-time">오후</div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(1)"><div class="sch-num">#1</div><div class="sch-name">Future Era 6S매장</div><div class="sch-sub">로봇 시연·체험</div></div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(2)"><div class="sch-num">#2</div><div class="sch-name">중정로봇</div><div class="sch-sub">휴머노이드 로봇 실물 전시</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(1)"><div class="sch-num">#1</div><div class="sch-name">Future Era 6S매장</div><span class="sch-tag">로봇·자동화</span><div class="sch-sub">로봇 시연·체험</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(2)"><div class="sch-num">#2</div><div class="sch-name">중정로봇</div><span class="sch-tag">로봇·자동화</span><div class="sch-sub">휴머노이드 로봇 실물 전시</div></div>
             <div class="sch-wrapup">Daily Wrap-Up #1</div>
           </div>
         </div>
@@ -2559,11 +2628,11 @@
           </div>
           <div class="sch-body">
             <div class="sch-time">오전</div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(3)"><div class="sch-num">#3</div><div class="sch-name">BYD 쇼룸</div><div class="sch-sub">전기차·배터리 전시관</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(3)"><div class="sch-num">#3</div><div class="sch-name">BYD 쇼룸</div><span class="sch-tag">모빌리티</span><div class="sch-sub">전기차·배터리 전시관</div></div>
             <div class="sch-time">오후</div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(4)"><div class="sch-num">#4</div><div class="sch-name">NIO House</div><div class="sch-sub">5D 시승·배터리 교체 체험</div></div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(5)"><div class="sch-num">#5</div><div class="sch-name">Upper Hills 전기차 매장</div><div class="sch-sub">화웨이·샤오미·NIO·AVATR</div></div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(6)"><div class="sch-num">#6</div><div class="sch-name">메이탄 드론 배달</div><div class="sch-sub">도심 물류 자동화 현장</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(4)"><div class="sch-num">#4</div><div class="sch-name">NIO House</div><span class="sch-tag">모빌리티·CX</span><div class="sch-sub">5D 시승·배터리 교체 체험</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(5)"><div class="sch-num">#5</div><div class="sch-name">Upper Hills 전기차 매장</div><span class="sch-tag">모빌리티</span><div class="sch-sub">화웨이·샤오미·NIO·AVATR</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(6)"><div class="sch-num">#6</div><div class="sch-name">메이탄 드론 배달</div><span class="sch-tag">물류·자동화</span><div class="sch-sub">도심 물류 자동화 현장</div></div>
             <div class="sch-wrapup">Daily Wrap-Up #2</div>
           </div>
         </div>
@@ -2576,11 +2645,11 @@
           </div>
           <div class="sch-body">
             <div class="sch-time">오전</div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(7)"><div class="sch-num">#7</div><div class="sch-name">징둥전기</div><div class="sch-sub">로컬 가전매장</div></div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(8)"><div class="sch-num">#8</div><div class="sch-name">화창베이 (华强北)</div><div class="sch-sub">세계최대 부품 도매시장</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(7)"><div class="sch-num">#7</div><div class="sch-name">징동전기</div><span class="sch-tag">유통·공급망</span><div class="sch-sub">로컬 가전매장</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(8)"><div class="sch-num">#8</div><div class="sch-name">화창베이 (华强北)</div><span class="sch-tag">유통·공급망</span><div class="sch-sub">세계최대 부품 도매시장</div></div>
             <div class="sch-time">오후</div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(9)"><div class="sch-num">#9</div><div class="sch-name">심천개혁개방전시관</div><div class="sch-sub">역사 전시 관람</div></div>
-            <div class="sch-item sch-item-clickable" onclick="openVP(10)"><div class="sch-num">#10</div><div class="sch-name">심천대학교</div><div class="sch-sub">캠퍼스 방문 + 교수 특강</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(9)"><div class="sch-num">#9</div><div class="sch-name">심천개혁개방전시관</div><span class="sch-tag">역사</span><div class="sch-sub">역사 전시 관람</div></div>
+            <div class="sch-item sch-item-clickable" onclick="openVP(10)"><div class="sch-num">#10</div><div class="sch-name">심천대학교</div><span class="sch-tag">인재·창업</span><div class="sch-sub">캠퍼스 방문 + 교수 특강</div></div>
             <div class="sch-item" style="border-left-color:var(--lg-red);"><div class="sch-name">🎓 수료식</div></div>
             <div class="sch-wrapup-final">Capstone Session</div>
           </div>
@@ -2691,7 +2760,7 @@
       <div class="cl-day-bar cl-d3">DAY 3 · 4/25 (토)</div>
       <div class="cl-items">
         <div class="cl-item" id="cl-7" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-7">✓</div><div class="cl-text"><span class="cl-num">#7</span><span class="cl-venue">화창베이</span>우리 제품 핵심 모듈과 유사한 부품 <strong>현장 구입 가능 여부 및 가격</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(7)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-8" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-8">✓</div><div class="cl-text"><span class="cl-num">#8</span><span class="cl-venue">징둥전기</span>로컬 브랜드 중 <strong>LG 대비 우위 포인트 3가지</strong> 발굴</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(8)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-8" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-8">✓</div><div class="cl-text"><span class="cl-num">#8</span><span class="cl-venue">징동전기</span>로컬 브랜드 중 <strong>LG 대비 우위 포인트 3가지</strong> 발굴</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(8)">상세 미션 ↗</button></div>
         <div class="cl-item" id="cl-9" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-9">✓</div><div class="cl-text"><span class="cl-num">#9</span><span class="cl-venue">심천개혁개방전시관</span>40년 변모의 <strong>결정적 변곡점 정책·사건 3가지</strong> 메모</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(9)">상세 미션 ↗</button></div>
         <div class="cl-item" id="cl-10" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-10">✓</div><div class="cl-text"><span class="cl-num">#10</span><span class="cl-venue">심천대학교</span>교내 연구 과제와 <strong>기업 사업 과제의 연결 구조</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(10)">상세 미션 ↗</button></div>
       </div>
@@ -2706,87 +2775,151 @@
     <!-- ⑥ 기이수자 인사이트 -->
     <div class="main-accord-item" id="mac-5">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-5')">
-        <div class="mat-icon-wrap">💬</div>
+        <div class="mat-icon-wrap">💡</div>
         <div class="mat-texts">
-          <div class="mat-title">기이수자 인사이트</div>
-          <div class="mat-sub">2025년 6월 현장 방문 후 제출 보고 · 5인</div>
+          <div class="mat-title">가기 전 미리 생각할 거리</div>
+          <div class="mat-sub">현장에서 진짜 인사이트를 얻으려면, 가기 전에 이미 질문이 있어야 합니다</div>
         </div>
         <span class="mat-chevron">▼</span>
       </button>
       <div class="main-accord-body">
         <div style="padding:0 24px 16px;">
-          <div class="section" style="padding-top:20px;">
-            <div class="section-header">
-              <div class="section-icon-wrap">💬</div>
-              <h2 class="section-title">기이수자 인사이트</h2>
-            </div>
-            <div class="insight-intro">
-              이전 기수 참가자가 현장 방문 후 직접 제출한 인사이트입니다. 카드를 선택하시면 전체 내용을 확인하실 수 있습니다.
-            </div>
-            <div class="insight-list">
 
-              <div class="insight-row" data-ip="A" onclick="openIPRow(this)">
-                <div class="insight-row-bar" style="background:#A50034;"></div>
-                <div class="insight-row-inner">
-                  <div class="insight-av" style="background:#A50034;">A</div>
-                  <div class="insight-row-info">
-                    <div class="insight-row-meta">기이수자 | R&D 부문 · 2025년 6월 심천 현장 방문</div>
-                    <div class="insight-row-summary">"기술 격차보다 상용화 속도의 격차가 더 컸다."</div>
-                    <div class="insight-row-tags"><span class="insight-tag">로봇 상용화</span><span class="insight-tag">가격 경쟁력</span><span class="insight-tag">속도의 경제</span></div>
-                  </div>
-                  <div class="insight-row-arrow">›</div>
-                </div>
-              </div>
-              <div class="insight-row" data-ip="B" onclick="openIPRow(this)">
-                <div class="insight-row-bar" style="background:#2a5298;"></div>
-                <div class="insight-row-inner">
-                  <div class="insight-av" style="background:#2a5298;">B</div>
-                  <div class="insight-row-info">
-                    <div class="insight-row-meta">기이수자 | 제조 부문 · 2025년 6월 심천 현장 방문</div>
-                    <div class="insight-row-summary">"'파는 공간'이 아니라 '속하는 공간'을 만들었다."</div>
-                    <div class="insight-row-tags"><span class="insight-tag">고객 경험</span><span class="insight-tag">공간 전략</span><span class="insight-tag">구독 모델</span></div>
-                  </div>
-                  <div class="insight-row-arrow">›</div>
-                </div>
-              </div>
-              <div class="insight-row" data-ip="C" onclick="openIPRow(this)">
-                <div class="insight-row-bar" style="background:#c17f24;"></div>
-                <div class="insight-row-inner">
-                  <div class="insight-av" style="background:#c17f24;">C</div>
-                  <div class="insight-row-info">
-                    <div class="insight-row-meta">기이수자 | 생산 부문 · 2025년 6월 심천 현장 방문</div>
-                    <div class="insight-row-summary">"누군가가 72시간 안에 우리 제품을 카피할 수 있다."</div>
-                    <div class="insight-row-tags"><span class="insight-tag">공급망 생태계</span><span class="insight-tag">원가 혁신</span><span class="insight-tag">화창베이</span></div>
-                  </div>
-                  <div class="insight-row-arrow">›</div>
-                </div>
-              </div>
-              <div class="insight-row" data-ip="D" onclick="openIPRow(this)">
-                <div class="insight-row-bar" style="background:#2d6a4f;"></div>
-                <div class="insight-row-inner">
-                  <div class="insight-av" style="background:#2d6a4f;">D</div>
-                  <div class="insight-row-info">
-                    <div class="insight-row-meta">기이수자 | R&D 부문 · 2025년 6월 심천 현장 방문</div>
-                    <div class="insight-row-summary">"우리는 '우리가 다 만든다'고 얼마나 말할 수 있는가?"</div>
-                    <div class="insight-row-tags"><span class="insight-tag">수직계열화</span><span class="insight-tag">BYD</span><span class="insight-tag">핵심기술 내재화</span></div>
-                  </div>
-                  <div class="insight-row-arrow">›</div>
-                </div>
-              </div>
-              <div class="insight-row" data-ip="E" onclick="openIPRow(this)">
-                <div class="insight-row-bar" style="background:#6b21a8;"></div>
-                <div class="insight-row-inner">
-                  <div class="insight-av" style="background:#6b21a8;">E</div>
-                  <div class="insight-row-info">
-                    <div class="insight-row-meta">기이수자 | 전략 부문 · 2025년 6월 심천 현장 방문</div>
-                    <div class="insight-row-summary">"하드웨어가 플랫폼의 부품이 된 구조를 목격했다."</div>
-                    <div class="insight-row-tags"><span class="insight-tag">플랫폼 경제</span><span class="insight-tag">물류 자동화</span><span class="insight-tag">메이퇀</span></div>
-                  </div>
-                  <div class="insight-row-arrow">›</div>
-                </div>
-              </div>
+          <!-- 도입 안내 -->
+          <div class="think-intro-box">
+            <div class="think-notice blue">
+              <strong>💡 기이수자 인터뷰에서 공통으로 나온 말</strong><br>
+              "현장에 가면 질문의 수준이 달라집니다. 미리 고민하고 간 사람과 그렇지 않은 사람의 차이는 현장에서 바로 드러납니다."
+            </div>
+            <div class="think-notice amber">
+              <strong>📌 참고 안내</strong><br>
+              아래 인터뷰는 '25년 기이수자들의 심천 현장 방문 후 소감을 발췌한 것입니다. '25년과 '26년의 방문지는 일부 달라졌지만, 같은 고민을 안고 현장을 다녀온 우리 임원들이 무엇을 보고 느꼈는지를 미리 참고하시면 이번 방문을 더욱 깊이 있게 준비하는 데 도움이 됩니다.
             </div>
           </div>
+
+          <!-- A -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#A50034;">
+              <div class="think-av">A</div>
+              <div>
+                <div class="think-card-title">기이수자 | TV 생산 부문 — BYD 방문 후</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"유리와 타이어 외에는 자체 기술… 핵심 부품 내재화에 심혈을 기울이는 것으로 보입니다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">BYD가 "유리와 타이어 외엔 다 자체 기술"이라고 말하는 자부심의 근거는 무엇입니까? 우리 조직에서 핵심 내재화와 외부 조달의 경계선을 어디에 그을 것입니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">BYD</span><span class="insight-tag">수직계열화</span><span class="insight-tag">핵심기술 내재화</span></div>
+            </div>
+          </div>
+
+          <!-- B -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#2a5298;">
+              <div class="think-av">B</div>
+              <div>
+                <div class="think-card-title">기이수자 | 에어컨 생산 부문 — 메이디 방문 후</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"10~20년 전부터 미래 사업 전략을 수립하고 꾸준하게, 조용하게 실천해오고 있었다는 생각이 들었다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">메이디가 KUKA 인수 등 조용히 그러나 집요하게 실행해온 10년의 그림 — 우리는 지금 10년 후를 위해 어떤 것을 조용히 실천하고 있습니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">메이디</span><span class="insight-tag">M&amp;A 전략</span><span class="insight-tag">장기 전략</span></div>
+            </div>
+          </div>
+
+          <!-- C -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#c17f24;">
+              <div class="think-av">C</div>
+              <div>
+                <div class="think-card-title">기이수자 | 구매 부문 — 메이디 방문 후</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"냉장고 공장 조립에 오늘 한 명이 출근했는데 그게 본인이라는 직원 인터뷰… 제조 경쟁력의 자부심을 느낄 수 있었습니다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">자동화 공장에 단 한 명이 출근하는 것을 자랑스러워하는 그 문화 — 우리 현장의 자동화는 비용 절감을 위한 것입니까, 아니면 경쟁력의 철학에서 나온 것입니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">메이디</span><span class="insight-tag">다크 팩토리</span><span class="insight-tag">제조 자부심</span></div>
+            </div>
+          </div>
+
+          <!-- D -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#1a1a2e;">
+              <div class="think-av">D</div>
+              <div>
+                <div class="think-card-title">기이수자 | PC사업 부문 — 화웨이 방문 후</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"SW 플랫폼을 이용해 자신들에게 유리한 게임의 룰을 만들어 제품 경쟁력을 확보한 후 경쟁사들을 시장으로 불러들이고 있어… 너무 충격이었습니다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">화웨이가 OpenHarmony로 '게임의 룰'을 새로 쓰고 있습니다. 우리 ThinQ는 이 생태계와 어떻게 연결될 수 있으며, 아무것도 하지 않는 것의 비용은 얼마입니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">화웨이</span><span class="insight-tag">SW 플랫폼</span><span class="insight-tag">OpenHarmony</span></div>
+            </div>
+          </div>
+
+          <!-- E -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#2d6a4f;">
+              <div class="think-av">E</div>
+              <div>
+                <div class="think-card-title">기이수자 | 광학연구소 — AI 전환 관련</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"이제 하드웨어는 '깡통'이 되어서는 안 됩니다. AI Powered OS와 AI-Driven Features를 적극 탑재하여 제품의 본질적인 가치를 극대화해야 합니다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">현장에서 AI가 어떻게 제품의 '가치'로 구현되어 있는지 직접 체감하십시오. 우리 제품에서 AI는 마케팅 언어입니까, 아니면 진짜 차별점입니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">AI 전환</span><span class="insight-tag">SW 플랫폼</span><span class="insight-tag">제품 가치</span></div>
+            </div>
+          </div>
+
+          <!-- F -->
+          <div class="think-card">
+            <div class="think-card-head" style="background:#6b21a8;">
+              <div class="think-av">F</div>
+              <div>
+                <div class="think-card-title">기이수자 | 기획 부문 — 화창베이 방문 후</div>
+                <div class="think-card-sub">'25년 심천 현장 방문 후 제출한 과제 중 발췌</div>
+              </div>
+            </div>
+            <div class="think-card-body">
+              <blockquote class="think-quote">"ThinQ를 과감히 Open하여 저들의 생태계인 OpenHarmony와 어떤 방식으로든 연결을 시켜놔야 합니다. 더 이상 단순 하드웨어로서는 경쟁력을 갖출 수 없습니다."</blockquote>
+              <div class="think-q-box">
+                <div class="think-q-label">💡 가기 전 생각해볼 질문</div>
+                <div class="think-q-text">화창베이에서 우리 제품에 들어가는 핵심 모듈을 직접 찾아보십시오. "아이디어가 72시간 안에 시제품이 되는 이 생태계"와 우리의 개발 속도 사이에서 무엇을 포기하고 무엇을 되찾아야 합니까?</div>
+              </div>
+              <div class="insight-row-tags"><span class="insight-tag">화창베이</span><span class="insight-tag">ThinQ 개방</span><span class="insight-tag">속도의 경제</span></div>
+            </div>
+          </div>
+
+          <!-- 마무리 인터뷰 -->
+          <div class="think-outro">
+            <div class="think-outro-title">기이수자 인터뷰에서 — 현장이 바꾼 것들</div>
+            <blockquote class="think-outro-quote">"벤치마킹 이후 실제 중국 업체 미팅을 5곳 진행했습니다. 미팅할 때 질문의 수준이 확실히 달라집니다. 이게 얼마나 얇으면 성능이 나냐, 원가가 얼마냐 — 이런 현실적인 질문들이 나오기 시작했습니다."</blockquote>
+            <blockquote class="think-outro-quote">"중국산 JDM은 원가가 48% 싸고 품질이 좀 떨어질 거라는 생각을 했는데, 직접 보니까 똑같습니다."</blockquote>
+            <blockquote class="think-outro-quote">"거기 있는 분들도 저와 비슷한 고민을 하시는 분들이라, 그 과정에서 다른 분들 듣는 게 나한테 많이 도움이 됐습니다. 유사 분야끼리 함께할 때 현실적인 고민을 나누며 실질적인 답을 찾는 효과가 컸습니다."</blockquote>
+            <div class="think-outro-note">📎 위 인터뷰는 '25년 기이수자를 대상으로 진행한 사전 인터뷰의 실제 코멘트를 발췌한 것입니다.</div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -3114,9 +3247,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">2025년 7월 설립. 세계 최초 로봇 기반 '6S' 비즈니스 모델 매장. 실험실에서 생활 현장으로 이어지는 마지막 1km의 장벽을 허무는 혁신 모델로, 50개 이상 로봇 기업 제품을 한곳에 집결.</div>
+      <div class="vp-desc">2025년 설립. 세계 최초 로봇 기반 '6S' 비즈니스 모델. 50개 이상 로봇 기업 제품을 한곳에 집결, 실험실에서 생활 현장으로 잇는 혁신 모델.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>기존 자동차 4S(판매·부품·서비스·조사)에 일대(Lease)와 맞춤형 서비스(Customized)를 결합한 전주기 서비스 체계</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>전시·체험·판매·서비스가 통합된 온·오프라인 로봇 산업 생태계</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>휴머노이드부터 서비스 로봇까지, 가전 유통의 미래와 서비스 표준을 재정의하는 사례</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>전시·체험·판매·서비스가 통합된 온·오프라인 로봇 생태계</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>휴머노이드부터 서비스 로봇까지 가전 유통의 미래를 재정의</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-2">
@@ -3135,9 +3268,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">2023년 설립. 광동성 심천 남산구 소재. 인간형(휴머노이드) 로봇 스타트업으로, 전신 보행·균형 제어·관절 구동 등 핵심 기술 자체 개발 중. 연구·개발부터 시제품·양산까지 초고속 실행 조직.</div>
+      <div class="vp-desc">2023년 설립. 휴머노이드 로봇 스타트업. 전신 보행·균형 제어·관절 구동 핵심 기술 자체 개발. 초고속 실행 조직.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>실험이 아닌 실제 작업·서비스 투입을 목표로 한 로봇 설계 방향성</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>소수 정예 엔지니어 중심의 고밀도 R&amp;D 조직 — 중국 로봇 산업 내 인재 전쟁의 현실</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>스타트업 주도로 기술 패러다임을 흔드는 중국 로봇·AI 산업의 현재 진행형</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>소수 정예 엔지니어 중심 고밀도 R&amp;D 조직 — 중국 인재 전쟁의 현실</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>스타트업 주도로 기술 패러다임을 흔드는 AI·로봇 산업</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-3">
@@ -3156,9 +3289,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">1995년 배터리 제조로 출발, 현재 세계 최대 전기차 기업. 2024년 EV 427만 대 생산. 배터리·완성차를 동시에 생산하는 유일한 기업으로 저가~프리미엄(멘자/양왕) 라인업, 상용차·특수차까지 수직계열화.</div>
+      <div class="vp-desc">세계 1위 EV 기업. "유리와 타이어 외엔 다 자체 기술"로 상징되는 극단적 수직계열화. 배터리부터 반도체까지 핵심 내재화.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>배터리 → 모터 → 자체까지 수직계열화의 끝에서 구현한 품질과 가격경쟁력</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>2020~2024년 10배 성장을 가능케 한 블레이드 배터리 기술 혁신</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>IT 기기용 배터리 사업에서 완성 전기차 기업으로의 Transformation 궤적</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>수직계열화 전략과 원가 우위의 실체를 현장에서 확인</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>Make vs Buy의 경계를 우리 사업에 어떻게 설정할 것인가</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-4">
@@ -3177,9 +3310,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">전기차 브랜드 NIO의 혁신 모빌리티 경험 공간. 자동차 전시를 넘어 커뮤니티·브랜드 문화 플랫폼으로 확장. 5D 전기차 시승(주행x) 및 전기차 배터리 교체 체험 가능.</div>
+      <div class="vp-desc">프리미엄 EV 브랜드. 배터리 교체 시스템(BaaS), 구독 서비스, 커뮤니티 공간. 하드웨어를 플랫폼으로 전환한 비즈니스 모델.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>BEP 달성이 늦어짐에도 '교체 방식'과 '커뮤니티'를 고집하는 고객 경험 전략</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>카페·도서관이 공존하는 매장 — 고객의 시간과 라이프스타일을 점유하는 방식</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>LG전자 구독 모델과의 연결 가능성 탐색</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>시승 및 배터리 교체 체험 — 서비스가 된 자동차</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>CX 혁신으로 브랜드 충성도를 설계하는 방식</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-5">
@@ -3191,16 +3324,16 @@
             <span class="vp-badge-num">#5</span>
             <span class="vp-badge-day" style="background:#A50034;">DAY 2</span>
           </div>
-          <div class="vp-title">Upper Hills 전기차 매장</div>
+          <div class="vp-title">Upper Hills EV 복합 쇼룸</div>
           <div class="vp-tags-row"><span class="va-tag tag-mobility">모빌리티·소비자</span></div>
         </div>
         <button class="vp-close" onclick="closeVP()">&#10005;</button>
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">프리미엄 복합몰 내 화웨이·샤오미·NIO·AVATR 등 멀티브랜드 전기차 쇼룸. IT 기기 매장 사이에서 전기차를 판매하는 새로운 유통 형태.</div>
+      <div class="vp-desc">화웨이·샤오미·NIO·AVATR가 집결한 복합 전기차 쇼룸. SW 플랫폼이 하드웨어 경쟁력을 결정하는 새로운 생태계.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>프리미엄 소비자가 IT 기기 사이에서 자동차를 고르는 기준 — 가전과 IT 경계의 붕괴</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>각 브랜드별 인포테인먼트 OS 반응속도 비교 체험</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>소비자가 LG를 '가전 제조사'가 아닌 '라이프 솔루션'으로 기대하는 시대</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>OpenHarmony가 '게임의 룰'을 새로 쓰는 현장</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>ThinQ와 이 생태계를 어떻게 연결할 것인가</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-6">
@@ -3219,9 +3352,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">도심 드론 배달 서비스 현장. 지킨이 하늘에서 내려오는 도시 — 물류 자동화가 이미 일상이 된 현장을 직접 체험.</div>
+      <div class="vp-desc">도심 드론 배송 서비스 실제 운영 현장. 라스트마일 물류 혁신과 규제 환경 — 중국만이 가능한 실험의 현장.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>'플랫폼이 하드웨어를 통제하는' 패턴이 물류에서 실현된 현장</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>드론 HW보다 배송 알고리즘 플랫폼 점유력이 핵심 경쟁력</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>LG전자 물류 및 서비스망에 대한 플랫폼 위협 시나리오 탐색</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>도심 배송 자동화의 현재와 속도</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>물류·배송이 바꾸는 소비자 경험</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-7">
@@ -3233,16 +3366,16 @@
             <span class="vp-badge-num">#7</span>
             <span class="vp-badge-day" style="background:#c17f24;">DAY 3</span>
           </div>
-          <div class="vp-title">징둥전기</div>
+          <div class="vp-title">징동전기</div>
           <div class="vp-tags-row"><span class="va-tag tag-retail">유통·소비자</span></div>
         </div>
         <button class="vp-close" onclick="closeVP()">&#10005;</button>
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">중국 로컬 가전 매장. 보고서 밖의 시장 — 중국 소비자가 실제로 어떤 가전들을, 어디서, 왜 사는지를 직접 확인하는 현장.</div>
+      <div class="vp-desc">로컬 가전 유통의 현재와 세계 최대 전자부품 도매시장. "아이디어가 72시간 안에 시제품이 되는" 생태계의 실체.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>수치 시장점유율을 뒤에 숨겨진 중국 소비자의 '진짜 구매 동기' 탐색</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>로컬 브랜드 중 LG전자 제품보다 우위에 있는 디자인·기능 포인트 발굴</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>다양한 제품군과 가격대, 마감 품질의 현실 체감</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>우리 제품에 들어가는 핵심 모듈을 직접 찾아보기</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>중국 가전 생태계가 이미 이동한 영역은 어디인가</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-8">
@@ -3261,9 +3394,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">중국 최대 규모 전자 부품·디지털 IT 유통 시장. '중국의 실리콘밸리'라 불리며 아이디어가 72시간 만에 시제품이 되는 곳. 수백 개 매장, 수천 개 제조·유통업체 집결.</div>
+      <div class="vp-desc">세계 최대 전자부품 도매시장. 아이디어가 72시간 안에 시제품이 되는 생태계의 실체.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>소량 주문~대량 생산까지 현장에서 유연하게 협의 가능한 부품 생태계</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>스마트폰·반도체·센서·드론·IoT까지 거의 모든 전자 제품 도소매</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>우리의 개발 속도 대비 이 생태계의 속도 격차 — 기회비용을 직접 계측</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>우리 제품에 들어가는 핵심 모듈을 직접 찾아보기</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>중국 가전 생태계가 이미 이동한 영역은 어디인가</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-9">
@@ -3282,9 +3415,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">아무것도 없던 어촌이 40년 만에 세계의 공장이 되고 혁신의 수도가 된 방법을 담은 역사 전시관.</div>
+      <div class="vp-desc">40년 압축 성장의 역사를 한 눈에 담은 전시관. 어촌 마을이 글로벌 혁신 도시로 변모한 과정과 그 배경을 역사적 맥락에서 이해하는 현장.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>40년 변모의 가장 결정적인 변곡점 — 정책·사건 3가지 탐색</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>지금의 LG전자가 가진 '당연한 자산' 중 혁신을 방해하는 기득권 요소 냉정히 비판</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>심천의 성장 방식에서 우리 조직이 배울 수 있는 '제약 없는 실행'의 교훈</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>심천이 왜 혁신의 도시가 되었는가 — 역사적 맥락 이해</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>중국 개혁개방 정책이 만들어낸 40년의 압축 성장 스토리</span></div></div>
     </div>
   </div>
   <div class="vp-panel" id="vp-panel-10">
@@ -3303,9 +3436,9 @@
       </div>
     </div>
     <div class="vp-body">
-      <div class="vp-desc">BYD·화웨이·DJI 등 심천 대표 혁신 기업의 인재 파이프라인. 캠퍼스 방문 및 교수 특강을 통해 심천 혁신 생태계의 인재 배출 구조를 직접 확인.</div>
+      <div class="vp-desc">중국 혁신 인재 양성의 최전선. 창업 생태계와 산학협력 모델이 집약된 캠퍼스에서 미래 경쟁 상대를 직접 만나는 마지막 방문지.</div>
       <div class="vp-pts-label">&#128269; 관찰 포인트</div>
-      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>교내 연구소 주요 과제와 실제 기업 사업 과제의 연결 구조</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>중국 젊은 인재들이 LG전자 대신 로컬 테크 기업을 선택하는 이유</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>우리 R&amp;D 조직의 매력도를 높이기 위한 방안 모색</span></div></div>
+      <div class="vp-pts"><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>교수 특강 · 학생 창업 생태계 탐방</span></div><div class="vp-pt"><span class="vp-pt-arrow">→</span><span>중국 인재 육성 방식과 속도의 실체</span></div></div>
     </div>
   </div>
     </div>
