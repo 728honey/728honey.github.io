@@ -2351,12 +2351,12 @@
       <button class="prep-arrow" id="prepArrowLeft" onclick="scrollPrepTabs(-1)" aria-label="이전">‹</button>
       <div class="prep-tabs" id="prepTabs">
         <button class="prep-tab active" onclick="switchPrep(0)">🌤️ 날씨·옷차림</button>
-        <button class="prep-tab" onclick="switchPrep(2)">💳 결제·환율</button>
-        <button class="prep-tab" onclick="switchPrep(3)">📱 Alipay 등록 방법</button>
-        <button class="prep-tab" onclick="switchPrep(4)">📚 필수 과정 수강</button>
-        <button class="prep-tab" onclick="switchPrep(5)">✈ 공항 수속 안내</button>
-        <button class="prep-tab" onclick="switchPrep(6)">🏨 호텔 정보</button>
-        <button class="prep-tab" onclick="switchPrep(7)">🛂 입국 신고서</button>
+        <button class="prep-tab" onclick="switchPrep(1)">💳 결제·환율</button>
+        <button class="prep-tab" onclick="switchPrep(2)">📱 Alipay 등록 방법</button>
+        <button class="prep-tab" onclick="switchPrep(3)">📚 필수 과정 수강</button>
+        <button class="prep-tab" onclick="switchPrep(4)">✈ 공항 수속 안내</button>
+        <button class="prep-tab" onclick="switchPrep(5)">🏨 호텔 정보</button>
+        <button class="prep-tab" onclick="switchPrep(6)">🛂 입국 신고서</button>
       </div>
       <button class="prep-arrow" id="prepArrowRight" onclick="scrollPrepTabs(1)" aria-label="다음">›</button>
     </div>
@@ -2464,17 +2464,6 @@
 
       </div>
 
-      <div class="prep-check-bar">
-        <div></div>
-        <div class="prep-check-bar-right">
-          <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
-            <span class="check-icon">☑</span> 확인 완료
-          </button>
-          <button class="prep-next-btn" onclick="switchPrep(1)">다음: 날씨·옷차림 →</button>
-        </div>
-      </div>
-    </div>
-
     <!-- ① 날씨·옷차림 -->
     <div class="prep-panel active" id="prep-0">
       <div class="weather-notice">
@@ -2514,12 +2503,12 @@
       </table>
 
       <div class="prep-check-bar">
-        <button class="prep-next-btn" </button>
+        <div></div>
         <div class="prep-check-bar-right">
-          <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)">
+          <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
             <span class="check-icon">☑</span> 확인 완료
           </button>
-          <button class="prep-next-btn" onclick="switchPrep(2)">
+          <button class="prep-next-btn" onclick="switchPrep(1)">
           다음: 결제·환율 →
           </button>
         </div>
@@ -2553,10 +2542,10 @@
         💡 <strong>Tip:</strong> 카카오페이 및 토스페이는 알리페이와 연동되어 중국 현지에서 QR코드 결제가 가능합니다. 이미 앱을 사용 중이신 경우 별도 가입 없이 바로 활용하실 수 있습니다.
       </div>
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(1)">← 이전: 날씨·옷차림</button>
+        <button class="prep-next-btn" onclick="switchPrep(0)">← 이전: 날씨·옷차림</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(3)">다음: Alipay 등록 방법 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(2)">다음: Alipay 등록 방법 →</button>
         </div>
       </div>
     </div>
@@ -2614,10 +2603,10 @@
       </button>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(2)">← 이전: 결제·환율</button>
+        <button class="prep-next-btn" onclick="switchPrep(1)">← 이전: 결제·환율</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-2" onclick="togglePrepCheck(2)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(4)">다음: 필수 과정 수강 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(3)">다음: 필수 과정 수강 →</button>
         </div>
       </div>
     </div>
@@ -2668,10 +2657,10 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(3)">← 이전: Alipay 등록</button>
+        <button class="prep-next-btn" onclick="switchPrep(2)">← 이전: Alipay 등록</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-3" onclick="togglePrepCheck(3)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(5)">다음: 공항 수속 안내 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(4)">다음: 공항 수속 안내 →</button>
         </div>
       </div>
     </div>
@@ -2716,10 +2705,10 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(4)">← 이전: 필수 과정 수강</button>
+        <button class="prep-next-btn" onclick="switchPrep(3)">← 이전: 필수 과정 수강</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(6)">다음: 호텔 정보 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(5)">다음: 호텔 정보 →</button>
         </div>
       </div>
     </div>
@@ -2743,10 +2732,10 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(5)">← 이전: 공항 수속 안내</button>
+        <button class="prep-next-btn" onclick="switchPrep(4)">← 이전: 공항 수속 안내</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(7)">다음: 입국 신고서 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(6)">다음: 입국 신고서 →</button>
         </div>
       </div>
     </div>
@@ -2781,7 +2770,7 @@
       </table>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(6)">← 이전: 호텔 정보</button>
+        <button class="prep-next-btn" onclick="switchPrep(5)">← 이전: 호텔 정보</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-6" onclick="togglePrepCheck(6)"><span class="check-icon">☑</span> 확인 완료</button>
         </div>
