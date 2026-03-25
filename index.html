@@ -1603,10 +1603,17 @@
   }
   .think-notice.blue { background: #eff6ff; border-color: #2563eb; color: #1e3a8a; }
   .think-notice.amber { background: #fffbeb; border-color: #f59e0b; color: #78350f; }
+  .think-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
   .think-card {
     border: 1px solid var(--border); border-radius: 12px;
-    overflow: hidden; margin-bottom: 14px;
+    overflow: hidden; margin-bottom: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex; flex-direction: column;
   }
   .think-card-head {
     display: flex; align-items: center; gap: 12px;
@@ -2100,7 +2107,8 @@
     .sch-tab-btn.d3 { background: #c17f24; }
     .sch-tab-btn.d4 { background: #2d6a4f; }
 
-    /* 체크리스트 모바일 탭 */
+    /* 가기 전 생각할 거리 카드 1열 */
+    .think-cards-grid { grid-template-columns: 1fr; gap: 10px; }
     .cl-group { display: none; }
     .cl-group.cl-active { display: block; }
     .cl-tab-bar { display: flex; gap: 6px; margin-bottom: 12px; }
@@ -2720,6 +2728,7 @@
       <div class="section-icon-wrap">✅</div>
       <h2 class="section-title">관찰 미션 체크리스트</h2>
     </div>
+          <div class="cl-intro" style="margin-bottom:10px;">각 방문지에서 관찰 미션(팩트 확인)과 통찰 미션(LG 연결 사고)을 수행합니다.</div>
           <!-- 관찰미션 진행률 바 -->
           <div class="progress-wrap" style="padding:14px 0 10px;background:transparent;border-bottom:none;margin-bottom:4px;">
             <div class="progress-header">
@@ -2731,7 +2740,7 @@
             </div>
             <div class="progress-sub" id="cl-prog-sub">체크박스를 클릭하여 완료 여부를 기록하세요.</div>
           </div>
-    <div class="cl-intro">클릭하여 완료 체크 — 출발 전까지 모두 완료해 주세요.</div>
+    <div class="cl-intro">현장에서 직접 확인해야 할 항목입니다. 클릭하여 완료 체크하세요.</div>
     <div class="cl-tab-bar" id="clTabBar" style="display:none;">
       <button class="cl-tab-btn d1 active" onclick="switchClTab(0)">DAY 1</button>
       <button class="cl-tab-btn d2" onclick="switchClTab(1)">DAY 2</button>
@@ -2797,6 +2806,7 @@
             </div>
           </div>
 
+          <div class="think-cards-grid">
           <!-- A -->
           <div class="think-card">
             <div class="think-card-head" style="background:#A50034;">
@@ -2910,6 +2920,8 @@
               <div class="insight-row-tags"><span class="insight-tag">화창베이</span><span class="insight-tag">ThinQ 개방</span><span class="insight-tag">속도의 경제</span></div>
             </div>
           </div>
+
+          </div><!-- think-cards-grid -->
 
           <!-- 마무리 인터뷰 -->
           <div class="think-outro">
