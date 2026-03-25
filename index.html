@@ -1575,6 +1575,7 @@
     padding: 3px 9px; border-radius: 20px;
     font-family: 'DM Sans', sans-serif;
     white-space: nowrap; margin-top: 1px;
+    min-width: 90px; text-align: center;
   }
   .wrapup-content { font-size: 15px; color: var(--text); }
   .wrapup-content strong { color: var(--lg-red); }
@@ -1844,7 +1845,7 @@
 
     /* wrapup */
     .wrapup-content { font-size: 14px; }
-    .wrapup-num { font-size: 11px; padding: 3px 7px; white-space: nowrap; }
+    .wrapup-num { font-size: 11px; padding: 3px 7px; white-space: nowrap; min-width: 70px; text-align: center; }
   }
 
 
@@ -1928,6 +1929,124 @@
   }
   .nav-tab .nav-tab-icon { font-size: 14px; }
 
+  /* ── 현지정보 서브 탭 ── */
+  .sub-tabs {
+    display: flex; gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .sub-tab {
+    padding: 8px 16px; border: none; background: transparent;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: all 0.15s;
+    font-family: 'Noto Sans KR', sans-serif; white-space: nowrap;
+  }
+  .sub-tab:hover { color: var(--text); }
+  .sub-tab.active { color: var(--lg-red); border-bottom-color: var(--lg-red); font-weight: 700; }
+  .sub-panel { display: none; }
+  .sub-panel.active { display: block; }
+
+
+  @media (max-width: 640px) {
+    /* 로고바 한 줄 */
+    .lg-text { font-size: 11px; letter-spacing: 0; }
+    .logo-bar-right { font-size: 11px; letter-spacing: 0; }
+    .lg-circle { width: 26px; height: 26px; font-size: 12px; }
+    .logo-bar { padding: 10px 14px; }
+
+    /* 날씨 2×2 그리드 */
+    .weather-grid { grid-template-columns: repeat(2, 1fr); }
+    .prep-panel { overflow-x: hidden !important; overflow-y: auto !important; max-height: 60vh; }
+
+    /* 이전/확인완료/다음 버튼 축소 */
+    .prep-check-btn { font-size: 12px; padding: 5px 9px; }
+    .prep-check-btn .check-icon { font-size: 12px; }
+    .prep-next-btn { font-size: 12px; padding: 5px 9px; }
+    .prep-check-bar { gap: 4px; }
+    .prep-check-bar-right { gap: 4px; }
+
+    /* 아코디언 터치 영역 */
+    .main-accord-trigger { padding: 14px 16px; min-height: 56px; }
+    .mat-title { font-size: 14px; }
+    .mat-sub { font-size: 13px; }
+
+    /* 테이블 */
+    .prep-table { font-size: 13px; }
+    .prep-table td { padding: 9px 10px; line-height: 1.6; }
+    .prep-table td:first-child { width: 100px; font-size: 12px; white-space: nowrap; }
+    .airport-table { font-size: 13px; }
+    .airport-table td { padding: 8px 8px; }
+    .hotel-info-table td { padding: 9px 10px; font-size: 13px; }
+    .hotel-info-table td:first-child { width: 56px; font-size: 12px; }
+
+    /* 그리드 1열 */
+    .exchange-grid { grid-template-columns: 1fr; }
+
+    /* 인사이트 */
+    .insight-row-meta { font-size: 10px; }
+    .insight-row-summary { font-size: 13px; }
+    .insight-tag { font-size: 10px; padding: 2px 6px; }
+
+    /* 서베이 드로어 풀스크린 */
+    .survey-drawer { width: 100vw !important; max-width: 100vw !important; border-radius: 0 !important; }
+
+    /* 탭 좌우 스크롤만 허용 */
+    .prep-tabs { touch-action: pan-x; }
+    .prep-tabs-wrap { touch-action: pan-x; }
+
+    /* 팝업 본문 */
+    .vp-desc { font-size: 13px; line-height: 1.8; }
+    .dm-content { font-size: 13px; line-height: 1.8; }
+
+    /* 푸터 */
+    .footer { padding: 20px 16px 32px; }
+    .footer-note { font-size: 13px; line-height: 1.8; }
+
+    /* 체크리스트 */
+    .cl-venue { font-size: 14px; font-weight: 800; display: block; margin-bottom: 3px; margin-right: 0; }
+    .cl-text { font-size: 13px; line-height: 1.6; flex: 1; min-width: 0; word-break: keep-all; overflow-wrap: break-word; }
+    .cl-item { flex-wrap: nowrap; gap: 10px; padding: 12px 12px; align-items: flex-start; }
+    .cl-detail-btn { flex-shrink: 0; align-self: flex-start; margin-left: 0; font-size: 11px; padding: 4px 8px; }
+
+    /* Wrap-up */
+    .wrapup-content strong { font-size: 15px; }
+    .wrapup-content em { font-size: 13px; }
+
+    /* 일정표 모바일 탭 */
+    .schedule-wrap { overflow-x: visible; margin: 0; padding: 0; }
+    .schedule-grid { display: block; min-width: unset; }
+    .sch-card { display: none; }
+    .sch-card.sch-active { display: block; }
+    .sch-tab-bar { display: flex; gap: 6px; margin-bottom: 12px; }
+    .sch-tab-btn {
+      flex: 1; padding: 9px 4px; border: none; border-radius: 8px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; color: #fff;
+      opacity: 0.5; transition: opacity 0.15s;
+    }
+    .sch-tab-btn.active { opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .sch-tab-btn.d1 { background: #2a5298; }
+    .sch-tab-btn.d2 { background: var(--lg-red); }
+    .sch-tab-btn.d3 { background: #c17f24; }
+    .sch-tab-btn.d4 { background: #2d6a4f; }
+
+    /* 체크리스트 모바일 탭 */
+    .cl-group { display: none; }
+    .cl-group.cl-active { display: block; }
+    .cl-tab-bar { display: flex; gap: 6px; margin-bottom: 12px; }
+    .cl-tab-btn {
+      flex: 1; padding: 9px 4px; border: none; border-radius: 8px;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; color: #fff;
+      opacity: 0.5; transition: opacity 0.15s;
+    }
+    .cl-tab-btn.active { opacity: 1; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .cl-tab-btn.d1 { background: #2a5298; }
+    .cl-tab-btn.d2 { background: var(--lg-red); }
+    .cl-tab-btn.d3 { background: #c17f24; }
+  }
+
 </style>
 </head>
 <body>
@@ -2009,7 +2128,7 @@
         <button class="prep-tab" onclick="switchPrep(1)">💳 결제·환율</button>
         <button class="prep-tab" onclick="switchPrep(2)">📱 Alipay 등록 방법</button>
         <button class="prep-tab" onclick="switchPrep(3)">📚 필수 과정 수강</button>
-        <button class="prep-tab" onclick="switchPrep(4)">🧳 수하물 안내</button>
+        <button class="prep-tab" onclick="switchPrep(4)">✈ 공항 수속 안내</button>
         <button class="prep-tab" onclick="switchPrep(5)">🏨 호텔 정보</button>
         <button class="prep-tab" onclick="switchPrep(6)">🛂 입국 신고서</button>
       </div>
@@ -2023,48 +2142,23 @@
       </div>
       <div class="weather-grid">
         <div class="weather-card">
-          <div class="weather-date-row">
-            <span class="weather-date">4/23 (목)</span>
-            <span class="weather-temp-inline">32° / 27°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
-          </div>
+          <div class="weather-date-row"><span class="weather-date">4/23 (목)</span><span class="weather-temp-inline">32° / 27°</span></div>
+          <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
         </div>
         <div class="weather-card">
-          <div class="weather-date-row">
-            <span class="weather-date">4/24 (금)</span>
-            <span class="weather-temp-inline">31° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
-          </div>
+          <div class="weather-date-row"><span class="weather-date">4/24 (금)</span><span class="weather-temp-inline">31° / 26°</span></div>
+          <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
         </div>
         <div class="weather-card">
-          <div class="weather-date-row">
-            <span class="weather-date">4/25 (토)</span>
-            <span class="weather-temp-inline">30° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌦️</span>
-            <span class="weather-cond">소나기</span>
-          </div>
+          <div class="weather-date-row"><span class="weather-date">4/25 (토)</span><span class="weather-temp-inline">30° / 26°</span></div>
+          <div class="weather-icon-row"><span class="weather-icon">🌦️</span><span class="weather-cond">소나기</span></div>
         </div>
         <div class="weather-card">
-          <div class="weather-date-row">
-            <span class="weather-date">4/26 (일)</span>
-            <span class="weather-temp-inline">30° / 26°</span>
-          </div>
-          <div class="weather-icon-row">
-            <span class="weather-icon">🌧️</span>
-            <span class="weather-cond">비</span>
-          </div>
+          <div class="weather-date-row"><span class="weather-date">4/26 (일)</span><span class="weather-temp-inline">30° / 26°</span></div>
+          <div class="weather-icon-row"><span class="weather-icon">🌧️</span><span class="weather-cond">비</span></div>
         </div>
       </div>
       <div class="weather-note">* 날씨 정보 출처: 첨부 자료 기준 (현지 상황에 따라 변동 가능)</div>
-
       <div class="baggage-section-title" style="margin-top:18px;">개인 준비물 체크</div>
       <table class="prep-table">
         <thead><tr><th>항목</th><th>안내</th></tr></thead>
@@ -2078,14 +2172,17 @@
           <tr><td>전압</td><td>200V 50Hz — 한국과 동일, 어댑터 불필요</td></tr>
         </tbody>
       </table>
-    
+
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(1)">
+        <div></div>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-0" onclick="togglePrepCheck(0)">
+            <span class="check-icon">☑</span> 확인 완료
+          </button>
+          <button class="prep-next-btn" onclick="switchPrep(1)">
           다음: 결제·환율 →
-        </button>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2115,14 +2212,12 @@
       <div class="tip-box">
         💡 <strong>Tip:</strong> 카카오페이 및 토스페이는 알리페이와 연동되어 중국 현지에서 QR코드 결제가 가능합니다. 이미 앱을 사용 중이신 경우 별도 가입 없이 바로 활용하실 수 있습니다.
       </div>
-    
       <div class="prep-check-bar">
-        <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)">
-          <span class="check-icon">☑</span> 확인 완료
-        </button>
-        <button class="prep-next-btn" onclick="switchPrep(2)">
-          다음: Alipay 등록 방법 →
-        </button>
+        <button class="prep-next-btn" onclick="switchPrep(0)">← 이전: 날씨·옷차림</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-1" onclick="togglePrepCheck(1)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(2)">다음: Alipay 등록 방법 →</button>
+        </div>
       </div>
     </div>
 
@@ -2182,7 +2277,7 @@
         <button class="prep-check-btn" id="prep-chk-2" onclick="togglePrepCheck(2)">
           <span class="check-icon">☑</span> 확인 완료
         </button>
-        <button class="prep-next-btn" onclick="switchPrep(3)">
+        <button class="prep-next-btn" onclick="switchPrep(2)">
           다음: 필수 과정 수강 →
         </button>
       </div>
@@ -2237,14 +2332,27 @@
         <button class="prep-check-btn" id="prep-chk-3" onclick="togglePrepCheck(3)">
           <span class="check-icon">☑</span> 확인 완료
         </button>
-        <button class="prep-next-btn" onclick="switchPrep(4)">
-          다음: 수하물 안내 →
+        <button class="prep-next-btn" onclick="switchPrep(3)">
+          다음: 공항 수속 안내 →
         </button>
       </div>
     </div>
 
-    <!-- ⑤ 수하물 안내 -->
+    <!-- ⑤ 공항 수속 안내 -->
     <div class="prep-panel" id="prep-4">
+      <div class="baggage-section-title">공항 수속 안내 (대한항공 기준) <span style="color:var(--lg-red);font-size:13px;font-weight:700;margin-left:10px;">여권 잔여 유효기간 6개월 이상 확인 필수</span></div>
+      <table class="airport-table">
+        <thead><tr><th>시간</th><th>일정</th><th>안내</th></tr></thead>
+        <tbody>
+          <tr><td>05:30~</td><td>개별 탑승 수속</td><td>비즈니스석: A카운터 / 일반석: E·F카운터 (모닝캄: D카운터)</td></tr>
+          <tr><td>07:00</td><td>출국장 입장</td><td>면세점 쇼핑 및 자유시간</td></tr>
+          <tr><td>08:15</td><td>이륙</td><td>KE835 인천 국제공항 출발</td></tr>
+          <tr><td>11:25</td><td>착륙</td><td>심천 국제공항 도착</td></tr>
+          <tr><td>12:15</td><td>미팅</td><td>"2026 Global Innovation Field Study" 미팅 보드 앞에서 대기하여 주시기 바랍니다.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="baggage-section-title" style="margin-top:18px;">수하물 안내</div>
       <table class="prep-table">
         <thead><tr><th>구분</th><th>규격</th><th>주요 주의사항</th></tr></thead>
         <tbody>
@@ -2268,24 +2376,12 @@
       <div class="tip-box" style="margin-top:10px;">
         💡 <strong>Tip:</strong> 항공보안 365 앱을 설치하면 휴대/위탁 금지 물품 및 기내 반입 금지 물품 목록을 상세히 확인할 수 있습니다.
       </div>
-
-      <div class="baggage-section-title" style="margin-top:18px;">공항 수속 안내 (대한항공 기준)</div>
-      <table class="airport-table">
-        <thead><tr><th>시간</th><th>일정</th><th>안내</th></tr></thead>
-        <tbody>
-          <tr><td>05:30~</td><td>개별 탑승 수속</td><td>비즈니스석: A카운터 / 일반석: E·F카운터 (모닝캄: D카운터)</td></tr>
-          <tr><td>07:00</td><td>출국장 입장</td><td>면세점 쇼핑 및 자유시간</td></tr>
-          <tr><td>08:15</td><td>이륙</td><td>KE835 인천 국제공항 출발</td></tr>
-          <tr><td>11:25</td><td>착륙</td><td>심천 국제공항 도착</td></tr>
-          <tr><td>12:15</td><td>미팅</td><td>"2026 Global Innovation Field Study" 미팅 보드 앞에서 대기하여 주시기 바랍니다.</td></tr>
-        </tbody>
-      </table>
     
       <div class="prep-check-bar">
         <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)">
           <span class="check-icon">☑</span> 확인 완료
         </button>
-        <button class="prep-next-btn" onclick="switchPrep(5)">
+        <button class="prep-next-btn" onclick="switchPrep(4)">
           다음: 호텔 정보 →
         </button>
       </div>
@@ -2313,7 +2409,7 @@
         <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)">
           <span class="check-icon">☑</span> 확인 완료
         </button>
-        <button class="prep-next-btn" onclick="switchPrep(6)">
+        <button class="prep-next-btn" onclick="switchPrep(5)">
           다음: 입국 신고서 →
         </button>
       </div>
@@ -2430,6 +2526,12 @@
         <!-- 일정표 -->
     <div class="schedule-label">📅 일정표</div>
     <div class="sch-hint">👆 방문지 명칭을 선택하시면 상세 내용을 확인하실 수 있습니다.</div>
+    <div class="sch-tab-bar" id="schTabBar" style="display:none;">
+      <button class="sch-tab-btn d1 active" onclick="switchSchTab(1)">DAY 1</button>
+      <button class="sch-tab-btn d2" onclick="switchSchTab(2)">DAY 2</button>
+      <button class="sch-tab-btn d3" onclick="switchSchTab(3)">DAY 3</button>
+      <button class="sch-tab-btn d4" onclick="switchSchTab(4)">DAY 4</button>
+    </div>
     <div class="schedule-wrap">
       <div class="schedule-grid">
 
@@ -2480,7 +2582,7 @@
             <div class="sch-item sch-item-clickable" onclick="openVP(9)"><div class="sch-num">#9</div><div class="sch-name">심천개혁개방전시관</div><div class="sch-sub">역사 전시 관람</div></div>
             <div class="sch-item sch-item-clickable" onclick="openVP(10)"><div class="sch-num">#10</div><div class="sch-name">심천대학교</div><div class="sch-sub">캠퍼스 방문 + 교수 특강</div></div>
             <div class="sch-item" style="border-left-color:var(--lg-red);"><div class="sch-name">🎓 수료식</div></div>
-            <div class="sch-wrapup-final">최종 종합 Wrap-Up #3</div>
+            <div class="sch-wrapup-final">Capstone Session</div>
           </div>
         </div>
 
@@ -2502,27 +2604,24 @@
   <div class="wrapup-section">
     <div class="wrapup-label">🔄 Wrap-Up 세션 구조</div>
     <div class="wrapup-card">
-      <div class="wrapup-card-header">Wrap-Up 3단계 구조</div>
+      <div class="wrapup-card-header">Daily Wrap-Up &amp; Capstone Session</div>
       <div class="wrapup-items">
         <div class="wrapup-item">
           <span class="wrapup-num">Wrap-Up #1</span>
           <div class="wrapup-content">
-            <strong>가설 vs 현실 충돌 확인</strong>
-            <em> — '사전에 예상한 것과 현장에서 실제로 확인한 것이 달랐던 지점은 무엇입니까?'</em>
+            <em>오늘 마주한 속도 중 우리의 상식을 깨뜨린 가장 놀라운 지점은?</em>
           </div>
         </div>
         <div class="wrapup-item">
           <span class="wrapup-num">Wrap-Up #2</span>
           <div class="wrapup-content">
-            <strong>동료와 관찰 비교</strong>
-            <em> — 각자의 관찰을 교차 검증하여 공통 인사이트를 도출합니다.</em>
+            <em>'플랫폼이 하드웨어를 통제하는' 패턴이 LG전자 어느 사업에 가장 먼저 도달할 것인가?</em>
           </div>
         </div>
         <div class="wrapup-item">
-          <span class="wrapup-num">Wrap-Up #3</span>
+          <span class="wrapup-num">Capstone</span>
           <div class="wrapup-content">
-            <strong>행동 계획 선언</strong>
-            <em> — 귀국 첫 주에 실제로 적용할 실행 과제를 선정합니다.</em>
+            <strong>인사이트 통합·비즈니스 적용 토론 및 수료식</strong>
           </div>
         </div>
       </div>
@@ -2564,6 +2663,11 @@
             <div class="progress-sub" id="cl-prog-sub">체크박스를 클릭하여 완료 여부를 기록하세요.</div>
           </div>
     <div class="cl-intro">클릭하여 완료 체크 — 출발 전까지 모두 완료해 주세요.</div>
+    <div class="cl-tab-bar" id="clTabBar" style="display:none;">
+      <button class="cl-tab-btn d1 active" onclick="switchClTab(0)">DAY 1</button>
+      <button class="cl-tab-btn d2" onclick="switchClTab(1)">DAY 2</button>
+      <button class="cl-tab-btn d3" onclick="switchClTab(2)">DAY 3</button>
+    </div>
 
     <div class="cl-group">
       <div class="cl-day-bar cl-d1">DAY 1 · 4/23 (목)</div>
@@ -4087,31 +4191,6 @@
     updatePrepProgress();
     updateCLProgress();
   });
-</script><script>
-  function saveDMMemo(n, el) {
-    var cnt = document.getElementById('dm-cnt-' + n);
-    if (cnt) cnt.textContent = el.value.length + '자';
-    var saved = document.getElementById('dm-saved-' + n);
-    if (saved) {
-      saved.classList.add('show');
-      clearTimeout(saved._t);
-      saved._t = setTimeout(function(){ saved.classList.remove('show'); }, 1500);
-    }
-    try { localStorage.setItem('dm-memo-' + n, el.value); } catch(e) {}
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    for (var i = 1; i <= 10; i++) {
-      try {
-        var val = localStorage.getItem('dm-memo-' + i);
-        if (val) {
-          var el = document.getElementById('dm-memo-' + i);
-          if (el) { el.value = val; }
-          var cnt = document.getElementById('dm-cnt-' + i);
-          if (cnt) cnt.textContent = val.length + '자';
-        }
-      } catch(e) {}
-    }
-  });
 </script>
 
 
@@ -4163,5 +4242,58 @@
     }
   }, { passive: true });
 </script>
+<script>
+/* ── 모바일 일정표 탭 ── */
+function initSchTabs() {
+  var isMobile = window.innerWidth <= 640;
+  var tabBar = document.getElementById('schTabBar');
+  var cards = document.querySelectorAll('.sch-card');
+  if (!tabBar) return;
+  if (isMobile) {
+    tabBar.style.display = 'flex';
+    cards.forEach(function(c, i) { c.classList.toggle('sch-active', i === 0); });
+  } else {
+    tabBar.style.display = 'none';
+    cards.forEach(function(c) { c.classList.remove('sch-active'); c.style.display = ''; });
+  }
+}
+window.switchSchTab = function(day) {
+  var cards = document.querySelectorAll('.sch-card');
+  var btns = document.querySelectorAll('.sch-tab-btn');
+  cards.forEach(function(c, i) { c.classList.toggle('sch-active', i === day - 1); });
+  btns.forEach(function(b, i) { b.classList.toggle('active', i === day - 1); });
+};
+
+/* ── 모바일 체크리스트 탭 ── */
+function initClTabs() {
+  var isMobile = window.innerWidth <= 640;
+  var tabBar = document.getElementById('clTabBar');
+  var groups = document.querySelectorAll('.cl-group');
+  if (!tabBar) return;
+  if (isMobile) {
+    tabBar.style.display = 'flex';
+    groups.forEach(function(g, i) { g.classList.toggle('cl-active', i === 0); });
+  } else {
+    tabBar.style.display = 'none';
+    groups.forEach(function(g) { g.classList.remove('cl-active'); g.style.display = ''; });
+  }
+}
+window.switchClTab = function(idx) {
+  var groups = document.querySelectorAll('.cl-group');
+  var btns = document.querySelectorAll('.cl-tab-btn');
+  groups.forEach(function(g, i) { g.classList.toggle('cl-active', i === idx); });
+  btns.forEach(function(b, i) { b.classList.toggle('active', i === idx); });
+};
+
+window.addEventListener('load', function() { initSchTabs(); initClTabs(); });
+window.addEventListener('resize', function() { initSchTabs(); initClTabs(); });
+
+/* ── 현지정보 서브 탭 ── */
+window.switchSubTab = function(idx) {
+  document.querySelectorAll('.sub-tab').forEach(function(t, i) { t.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.sub-panel').forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+};
+</script>
+
 </body>
 </html>
