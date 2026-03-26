@@ -2206,7 +2206,7 @@
   <div class="main-accord-wrap">
 
     <!-- ⓪ 과정 여정 -->
-    <div class="main-accord-item" id="mac-6">
+    <div class="main-accord-item open" id="mac-6">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-6')">
         <div class="mat-icon-wrap">🗓</div>
         <div class="mat-texts">
@@ -2308,7 +2308,7 @@
     </div>
 
     <!-- ① 사전 준비 -->
-    <div class="main-accord-item" id="mac-0">
+    <div class="main-accord-item open" id="mac-0">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-0')">
         <div class="mat-icon-wrap">📋</div>
         <div class="mat-texts">
@@ -2675,7 +2675,7 @@
 
     <!-- ② 프로그램 개요 -->
     <!-- ② 교육 일정 (프로그램 개요 + 일정표) -->
-    <div class="main-accord-item" id="mac-2">
+    <div class="main-accord-item open" id="mac-2">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-2')">
         <div class="mat-icon-wrap">🏢</div>
         <div class="mat-texts">
@@ -2809,7 +2809,7 @@
         
     </div>
 
-    <div class="main-accord-item" id="mac-5">
+    <div class="main-accord-item open" id="mac-5">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-5')">
         <div class="mat-icon-wrap">💡</div>
         <div class="mat-texts">
@@ -2970,7 +2970,7 @@
 
 
     <!-- ⑤ 관찰 미션 체크리스트 -->
-    <div class="main-accord-item" id="mac-4">
+    <div class="main-accord-item open" id="mac-4">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-4')">
         <div class="mat-icon-wrap">✅</div>
         <div class="mat-texts">
@@ -3033,7 +3033,7 @@
         </div>
       </div>
     </div>
-    <div class="main-accord-item" id="mac-3">
+    <div class="main-accord-item open" id="mac-3">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-3')">
         <div class="mat-icon-wrap">📝</div>
         <div class="mat-texts">
@@ -3055,7 +3055,7 @@
         참가 기대사항 및 개인별 유의사항 확인을 위한 사전 설문입니다.<br>
         출발 전까지 꼭 응답해 주세요.
       </div>
-      <a href="https://surveyl.ink/jmkeB2" target="_blank" rel="noopener noreferrer" class="btn-white">설문 참여하기 →</a>
+      <button onclick="openSurveyDrawer()" class="btn-white" style="cursor:pointer;border:none;width:100%;">설문 참여하기 →</button>
     </div>
   </div>
       </div>
@@ -3074,7 +3074,7 @@
     </div>
     <div class="footer-divider"></div>
     <p class="footer-note">
-      담당: 송인해 책임 | <a href="/cdn-cgi/l/email-protection#d5bcbdfba6babbb295b9b2b0fbb6bab8" style="color:var(--lg-red);text-decoration:none;font-weight:600;"><span class="__cf_email__" data-cfemail="2a4342045945444d6a464d4f04494547">[email&#160;protected]</span></a> | 010-2303-3503<br>
+      담당: 송인해 책임 | <a href="mailto:inhae.song@lge.com" style="color:var(--lg-red);text-decoration:none;font-weight:600;">inhae.song@lge.com</a><br>
       본 자료는 LGE Internal Use Only입니다. 외부 유출을 엄격히 금합니다.
     </p>
   </div>
@@ -3197,7 +3197,7 @@ document.addEventListener('keydown', function(e) {
     .survey-drawer {
       position: fixed;
       top: 0; right: 0;
-      width: 480px; max-width: 96vw;
+      width: 50vw; max-width: 50vw;
       height: 100vh;
       background: #fff;
       z-index: 8001;
