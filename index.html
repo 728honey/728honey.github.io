@@ -3148,8 +3148,8 @@
     <!-- 2열 -->
     <div style="display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:start;">
       <!-- 폰 목업 -->
-      <div style="display:flex;justify-content:center;">
-        <div style="width:150px;background:#1C1C1E;border-radius:26px;padding:5px;box-shadow:0 8px 28px rgba(0,0,0,.25);">
+      <div style="display:flex;justify-content:center;flex-direction:column;align-items:center;gap:10px;">
+        <div style="width:150px;background:#1C1C1E;border-radius:26px;padding:5px;box-shadow:0 8px 28px rgba(0,0,0,.25);position:relative;">
           <div style="background:#F5F5F7;border-radius:21px;overflow:hidden;">
             <div style="background:#1C1C1E;height:16px;display:flex;justify-content:center;align-items:center;"><div style="width:48px;height:9px;background:#333;border-radius:5px;"></div></div>
             <div style="background:#fff;padding:3px 9px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:8.5px;font-weight:700;color:#1A1A1A;">9:41</span><div style="display:flex;gap:3px;align-items:center;"><svg width="12" height="8" viewBox="0 0 13 9" fill="#1A1A1A"><rect x="0" y="6" width="2.5" height="3"/><rect x="3.5" y="4" width="2.5" height="5"/><rect x="7" y="2" width="2.5" height="7"/><rect x="10.5" y="0" width="2.5" height="9"/></svg><svg width="17" height="8" viewBox="0 0 22 11" fill="none"><rect x="0" y="0" width="19" height="11" rx="2.5" stroke="#1A1A1A" stroke-width="1.2"/><rect x="1.5" y="1.5" width="14" height="8" rx="1.5" fill="#1A1A1A"/><path d="M20 3.5v4" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
@@ -3168,7 +3168,23 @@
             </div>
             <div style="height:12px;display:flex;align-items:center;justify-content:center;background:#F5F5F7;"><div style="width:34px;height:4px;background:#ccc;border-radius:2px;"></div></div>
           </div>
+          <!-- 돋보기 렌즈 오버레이 -->
+          <div style="position:absolute;bottom:28px;left:-22px;width:72px;height:72px;border-radius:50%;background:rgba(255,240,243,0.92);border:2.5px solid #C8002E;box-shadow:0 4px 20px rgba(200,0,46,0.35),inset 0 0 0 1px rgba(255,255,255,0.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;animation:lgenie-pulse 2s ease-in-out infinite;">
+            <div style="width:40px;height:40px;border-radius:9px;background:#FFF0F3;border:1.5px solid #C8002E;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(200,0,46,0.2);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <span style="font-size:7.5px;color:#C8002E;font-weight:800;text-align:center;line-height:1.1;">LGenie<br>Talk</span>
+          </div>
+          <!-- 렌즈 손잡이 -->
+          <div style="position:absolute;bottom:10px;left:26px;width:3px;height:18px;background:linear-gradient(to bottom,#C8002E,#9E0022);border-radius:2px;transform:rotate(35deg);transform-origin:top center;animation:lgenie-pulse 2s ease-in-out infinite;"></div>
         </div>
+
+        <style>
+          @keyframes lgenie-pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(200,0,46,0.35), inset 0 0 0 1px rgba(255,255,255,0.6); }
+            50% { box-shadow: 0 4px 28px rgba(200,0,46,0.6), inset 0 0 0 1px rgba(255,255,255,0.6); }
+          }
+        </style>
       </div>
 
       <!-- 단계 -->
