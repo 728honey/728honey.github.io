@@ -2228,7 +2228,7 @@
                 <div class="jt-title">📋 출발 전 TO DO 시작</div>
                 <div class="jt-desc">Alipay 설치, 로밍 신청, LGenie Talk 설치, 중국 출장자 필수 과정 수강 등을 지금 바로 시작하세요. 출발 1주일 전까지 완료를 권장합니다.</div>
                 <div class="jt-chips">
-                  <span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(2)},300)">📱 Alipay 앱 설치 · 카드 등록 ↗</span><span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(3)},300)">📚 EP 필수 과정 이수 ↗</span><span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(4)},300)">✈ 출장품의 ↗</span><span class="jt-chip">LGenie Talk 설치</span><span class="jt-chip">U+ 로밍 신청</span>
+                  <span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(2)},300)">📱 Alipay 앱 설치 · 카드 등록 ↗</span><span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(3)},300)">📚 EP 필수 과정 이수 ↗</span><span class="jt-chip" style="cursor:pointer;border-color:var(--lg-red);color:var(--lg-red);" onclick="navTabClick('mac-0');setTimeout(function(){switchPrep(4)},300)">✈ 출장품의 ↗</span><span class="jt-chip" style="cursor:pointer;border-color:#2a5298;color:#2a5298;" onclick="openLGeniePopup()">💬 LGenie Talk 설치 ↗</span><span class="jt-chip">U+ 로밍 신청</span>
                 </div>
               </div>
             </div>
@@ -3115,7 +3115,107 @@
 
 </div>
 
-  <!-- ── Wrap-Up 팝업 ── -->
+  <!-- ── LGenie Talk 팝업 ── -->
+<div id="lgenieOverlay" onclick="closeLGeniePopup()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9600;"></div>
+<div id="lgeniePopup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);width:490px;max-width:96vw;max-height:90vh;overflow-y:auto;background:#fff;border-radius:16px;z-index:9601;box-shadow:0 32px 72px rgba(0,0,0,0.28);opacity:0;transition:all 0.22s cubic-bezier(0.34,1.3,0.64,1);">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#E4003A 0%,#9E0022 100%);padding:22px 24px 18px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07);"></div>
+    <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:500;letter-spacing:.07em;padding:3px 10px;border-radius:20px;margin-bottom:10px;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M17 1H7C5.3 1 4 2.3 4 4v16c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3V4c0-1.7-1.3-3-3-3zm1 17H6V4h12v14z"/></svg>
+      Mobile App Guide
+    </div>
+    <div style="color:#fff;font-size:20px;font-weight:700;line-height:1.3;position:relative;z-index:1;">
+      LGenie Talk 설치 안내
+      <span style="color:rgba(255,255,255,.72);font-size:13px;font-weight:400;margin-top:3px;display:block;">모바일 EP 앱 설치 가이드 · iOS / Android</span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div style="padding:20px 24px;">
+    <!-- 경로 -->
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:#FFF0F3;border:1.5px solid #FFCCD8;border-radius:10px;padding:10px 14px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#1A1A1A;">
+        <div style="width:26px;height:26px;border-radius:7px;background:#E4003A;display:flex;align-items:center;justify-content:center;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17 1H7C5.3 1 4 2.3 4 4v16c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3V4c0-1.7-1.3-3-3-3zm1 17H6V4h12v14zm-5 3c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
+        </div>
+        모바일 EP
+      </div>
+      <span style="color:#E4003A;font-size:15px;font-weight:700;">›</span>
+      <span style="background:#E4003A;color:#fff;border-radius:7px;padding:3px 10px;font-size:12.5px;font-weight:700;">LGenie Talk (iOS / Android)</span>
+    </div>
+
+    <!-- 2열 -->
+    <div style="display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:start;">
+      <!-- 폰 목업 -->
+      <div style="display:flex;justify-content:center;">
+        <div style="width:150px;background:#1C1C1E;border-radius:26px;padding:5px;box-shadow:0 8px 28px rgba(0,0,0,.25);">
+          <div style="background:#F5F5F7;border-radius:21px;overflow:hidden;">
+            <div style="background:#1C1C1E;height:16px;display:flex;justify-content:center;align-items:center;"><div style="width:48px;height:9px;background:#333;border-radius:5px;"></div></div>
+            <div style="background:#fff;padding:3px 9px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:8.5px;font-weight:700;color:#1A1A1A;">9:41</span><div style="display:flex;gap:3px;align-items:center;"><svg width="12" height="8" viewBox="0 0 13 9" fill="#1A1A1A"><rect x="0" y="6" width="2.5" height="3"/><rect x="3.5" y="4" width="2.5" height="5"/><rect x="7" y="2" width="2.5" height="7"/><rect x="10.5" y="0" width="2.5" height="9"/></svg><svg width="17" height="8" viewBox="0 0 22 11" fill="none"><rect x="0" y="0" width="19" height="11" rx="2.5" stroke="#1A1A1A" stroke-width="1.2"/><rect x="1.5" y="1.5" width="14" height="8" rx="1.5" fill="#1A1A1A"/><path d="M20 3.5v4" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+            <div style="background:#fff;padding:5px 9px;border-bottom:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:space-between;"><svg width="12" height="10" viewBox="0 0 18 14" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round"><line x1="0" y1="2" x2="18" y2="2"/><line x1="0" y1="7" x2="18" y2="7"/><line x1="0" y1="12" x2="18" y2="12"/></svg><span style="color:#C8002E;font-size:10.5px;font-weight:700;letter-spacing:.05em;">EP</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
+            <div style="padding:7px 5px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px 3px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="15" height="12" viewBox="0 0 24 20" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="22" height="18" rx="3"/><path d="M1 5l11 8 11-8"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">메일</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;position:relative;"><div style="position:absolute;top:-4px;right:-4px;width:12px;height:12px;background:#C8002E;border-radius:50%;border:1.5px solid #F5F5F7;display:flex;align-items:center;justify-content:center;font-size:6.5px;color:#fff;font-weight:700;">7</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="19" rx="3"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="8" y1="1" x2="8" y2="5"/><line x1="16" y1="1" x2="16" y2="5"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">일정</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">결재</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">주소록</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17 14v7M14 17h7"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">Space</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">Help &amp; Guide</span></div>
+              <div style="grid-column:1/-1;height:.5px;background:#E5E5EA;margin:1px 0;"></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#FFF0F3;border:1.5px solid #C8002E;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C8002E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><span style="font-size:7px;color:#C8002E;font-weight:700;text-align:center;">LGenie Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span style="font-size:7px;color:#3C3C43;text-align:center;">근태</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2.5px;"><div style="width:34px;height:34px;border-radius:8px;background:#fff;border:.5px solid #E5E5EA;display:flex;align-items:center;justify-content:center;"><span style="font-size:7.5px;font-weight:700;color:#999;letter-spacing:-.5px;">LATS</span></div><span style="font-size:7px;color:#3C3C43;text-align:center;">LATS</span></div>
+            </div>
+            <div style="height:12px;display:flex;align-items:center;justify-content:center;background:#F5F5F7;"><div style="width:34px;height:4px;background:#ccc;border-radius:2px;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 단계 -->
+      <div>
+        <div style="font-size:10.5px;font-weight:700;color:#E4003A;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">설치 단계</div>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;gap:10px;position:relative;"><div style="position:absolute;left:12px;top:26px;width:1.5px;height:calc(100% - 6px);background:#E0E0E0;"></div><div style="width:24px;height:24px;border-radius:50%;background:#E4003A;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;">1</div><div style="padding-bottom:13px;flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1A;line-height:24px;">모바일 EP 실행</div><div style="font-size:11.5px;color:#777;line-height:1.6;margin-top:1px;">스마트폰에서 <b>모바일 EP</b> 앱을 실행합니다.</div></div></div>
+          <div style="display:flex;gap:10px;position:relative;"><div style="position:absolute;left:12px;top:26px;width:1.5px;height:calc(100% - 6px);background:#E0E0E0;"></div><div style="width:24px;height:24px;border-radius:50%;background:#E4003A;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;">2</div><div style="padding-bottom:13px;flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1A;line-height:24px;">아이콘 선택</div><div style="font-size:11.5px;color:#777;line-height:1.6;margin-top:1px;">앱 목록 하단에서 <b>LGenie Talk</b> 아이콘을 탭합니다.</div></div></div>
+          <div style="display:flex;gap:10px;position:relative;"><div style="position:absolute;left:12px;top:26px;width:1.5px;height:calc(100% - 6px);background:#E0E0E0;"></div><div style="width:24px;height:24px;border-radius:50%;background:#E4003A;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;">3</div><div style="padding-bottom:13px;flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1A;line-height:24px;">앱 설치 진행</div><div style="font-size:11.5px;color:#777;line-height:1.6;margin-top:1px;">안내에 따라 <b>설치</b>를 완료합니다.</div></div></div>
+          <div style="display:flex;gap:10px;"><div style="width:24px;height:24px;border-radius:50%;background:#E4003A;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;">4</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1A;line-height:24px;">로그인 후 사용</div><div style="font-size:11.5px;color:#777;line-height:1.6;margin-top:1px;">사번 계정으로 로그인 후 사용합니다.</div></div></div>
+        </div>
+        <div style="margin-top:14px;background:#FFF0F3;border-left:3px solid #E4003A;border-radius:0 8px 8px 0;padding:8px 12px;font-size:11.5px;color:#777;line-height:1.65;"><b style="color:#E4003A;">문의</b>는 Help &amp; Guide 메뉴 또는 IT Help Desk로 연락하세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="padding:14px 24px 18px;border-top:1px solid #E0E0E0;display:flex;justify-content:flex-end;">
+    <button onclick="closeLGeniePopup()" style="background:#E4003A;color:#fff;border:none;border-radius:8px;padding:9px 28px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">확인</button>
+  </div>
+</div>
+
+<script>
+function openLGeniePopup() {
+  var overlay = document.getElementById('lgenieOverlay');
+  var popup = document.getElementById('lgeniePopup');
+  overlay.style.display = 'block';
+  popup.style.display = 'block';
+  requestAnimationFrame(function() {
+    popup.style.opacity = '1';
+    popup.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+  document.body.style.overflow = 'hidden';
+}
+function closeLGeniePopup() {
+  var popup = document.getElementById('lgeniePopup');
+  popup.style.opacity = '0';
+  popup.style.transform = 'translate(-50%,-50%) scale(0.95)';
+  setTimeout(function() {
+    document.getElementById('lgenieOverlay').style.display = 'none';
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 200);
+}
+</script>
+
+<!-- ── Wrap-Up 팝업 ── -->
 <div id="wrapupOverlay" onclick="closeWrapupPopup()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9500;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;"></div>
 <div id="wrapupPopup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);width:100%;max-width:480px;background:#fff;border-radius:18px;z-index:9501;box-shadow:0 24px 60px rgba(0,0,0,0.25);overflow:hidden;opacity:0;transition:all 0.22s cubic-bezier(0.34,1.3,0.64,1);">
   <div style="background:#1a1a2e;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
