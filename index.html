@@ -2631,6 +2631,18 @@
         </div>
         <a href="https://s.nia.gov.cn/ArrivalCardFillingPC/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:var(--lg-red);color:#fff;font-size:14px;font-weight:700;padding:10px 18px;border-radius:8px;text-decoration:none;box-shadow:0 3px 10px rgba(165,0,52,0.22);white-space:nowrap;flex-shrink:0;">🌐 바로가기 →</a>
       </div>
+
+      <!-- 작성 가이드 버튼 -->
+      <div style="display:flex;gap:8px;margin:12px 0 4px;flex-wrap:wrap;">
+        <button onclick="openPdfViewer('https://raw.githubusercontent.com/728honey/globalinnovation/main/cnnia%20mobile.pdf','📱 모바일 작성 가이드')"
+           style="display:inline-flex;align-items:center;gap:6px;background:#1a1a2e;color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:8px;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.18);white-space:nowrap;">
+          📱 모바일 작성 가이드
+        </button>
+        <button onclick="openPdfViewer('https://raw.githubusercontent.com/728honey/globalinnovation/main/cnnia%20web.pdf','🖥 웹페이지 작성 가이드')"
+           style="display:inline-flex;align-items:center;gap:6px;background:#2a5298;color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:8px;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(42,82,152,0.25);white-space:nowrap;">
+          🖥 웹페이지 작성 가이드
+        </button>
+      </div>
       <table class="prep-table">
         <thead><tr><th>항목</th><th>입력값</th></tr></thead>
         <tbody>
@@ -3119,7 +3131,36 @@
 
 </div>
 
-  <!-- ── SURVEY DRAWER ── -->
+  <!-- ── PDF 뷰어 드로어 ── -->
+<div id="pdfDrawerOverlay" onclick="closePdfViewer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9000;backdrop-filter:blur(3px);"></div>
+<div id="pdfDrawer" style="position:fixed;top:0;right:0;width:520px;max-width:96vw;height:100vh;background:#fff;z-index:9001;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,0.2);transform:translateX(100%);transition:transform 0.25s ease-out;">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#1a1a2e;flex-shrink:0;">
+    <span id="pdfDrawerTitle" style="color:#fff;font-size:14px;font-weight:700;"></span>
+    <button onclick="closePdfViewer()" style="background:rgba(255,255,255,0.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;">✕</button>
+  </div>
+  <iframe id="pdfFrame" src="" style="flex:1;border:none;width:100%;" allow="fullscreen"></iframe>
+</div>
+
+<script>
+function openPdfViewer(url, title) {
+  document.getElementById('pdfDrawerTitle').textContent = title;
+  document.getElementById('pdfFrame').src = url;
+  document.getElementById('pdfDrawerOverlay').style.display = 'block';
+  document.getElementById('pdfDrawer').style.transform = 'translateX(0)';
+  document.body.style.overflow = 'hidden';
+}
+function closePdfViewer() {
+  document.getElementById('pdfDrawer').style.transform = 'translateX(100%)';
+  document.getElementById('pdfDrawerOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+  setTimeout(function(){ document.getElementById('pdfFrame').src = ''; }, 300);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePdfViewer();
+});
+</script>
+
+<!-- ── SURVEY DRAWER ── -->
   <div class="survey-drawer-overlay" id="surveyDrawerOverlay" onclick="closeSurveyDrawer()"></div>
   <div class="survey-drawer" id="surveyDrawer">
     <div class="survey-drawer-header">
