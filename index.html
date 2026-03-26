@@ -2192,10 +2192,9 @@
   <div class="nav-tabbar" id="navTabbar">
     <div class="nav-tab" id="ntab-mac-6" onclick="navTabClick('mac-6')"><span class="nav-tab-icon">🗓</span>과정 여정</div>
     <div class="nav-tab" id="ntab-mac-0" onclick="navTabClick('mac-0')"><span class="nav-tab-icon">📋</span>출발 전 체크리스트</div>
-    <div class="nav-tab" id="ntab-mac-1" onclick="navTabClick('mac-1')"><span class="nav-tab-icon">🗺</span>프로그램</div>
-    <div class="nav-tab" id="ntab-mac-2" onclick="navTabClick('mac-2')"><span class="nav-tab-icon">📅</span>일정표</div>
-    <div class="nav-tab" id="ntab-mac-4" onclick="navTabClick('mac-4')"><span class="nav-tab-icon">✅</span>현장 미션</div>
+    <div class="nav-tab" id="ntab-mac-2" onclick="navTabClick('mac-2')"><span class="nav-tab-icon">🏢</span>교육 일정</div>
     <div class="nav-tab" id="ntab-mac-5" onclick="navTabClick('mac-5')"><span class="nav-tab-icon">💡</span>가기 전 생각할 거리</div>
+    <div class="nav-tab" id="ntab-mac-4" onclick="navTabClick('mac-4')"><span class="nav-tab-icon">✅</span>현장 미션</div>
     <div class="nav-tab" id="ntab-mac-3" onclick="openSurveyDrawer()"><span class="nav-tab-icon">📝</span>사전 Survey</div>
   </div>
 
@@ -2675,24 +2674,21 @@
     </div>
 
     <!-- ② 프로그램 개요 -->
-    <div class="main-accord-item" id="mac-1">
-      <button class="main-accord-trigger" onclick="toggleMAC('mac-1')">
-        <div class="mat-icon-wrap">🗺️</div>
+    <!-- ② 교육 일정 (프로그램 개요 + 일정표) -->
+    <div class="main-accord-item" id="mac-2">
+      <button class="main-accord-trigger" onclick="toggleMAC('mac-2')">
+        <div class="mat-icon-wrap">🏢</div>
         <div class="mat-texts">
-          <div class="mat-title">프로그램 개요</div>
-          <div class="mat-sub">PHASE 1·2·3 학습 구조 및 목표</div>
+          <div class="mat-title">교육 일정</div>
+          <div class="mat-sub">프로그램 개요 · DAY 1~4 일정표 · 10개 방문지 상세</div>
         </div>
         <span class="mat-chevron">▼</span>
       </button>
       <div class="main-accord-body">
+        <div style="padding:0 24px;">
 
         <!-- ── 프로그램 개요 ── -->
-  <div class="prog-section">
-    <div class="section-header" style="margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--lg-red);display:flex;align-items:center;gap:10px;">
-      <div class="section-icon-wrap">📋</div>
-      <h2 class="section-title">프로그램 개요</h2>
-    </div>
-
+    <div class="schedule-label" style="margin-top:20px;">🗺️ 프로그램 개요</div>
     <div class="prog-phases">
       <div class="phase-card phase-1">
         <div class="phase-header">PHASE 1 — 사전 학습</div>
@@ -2728,23 +2724,9 @@
         </div>
       </div>
     </div>
-      </div>
-    </div>
 
-    <!-- ③ 일정표 + 방문 현장 구성 -->
-    <div class="main-accord-item" id="mac-2">
-      <button class="main-accord-trigger" onclick="toggleMAC('mac-2')">
-        <div class="mat-icon-wrap">🏢</div>
-        <div class="mat-texts">
-          <div class="mat-title">교육 일정</div>
-          <div class="mat-sub">DAY 1~4 일정표 + 10개 방문지 상세</div>
-        </div>
-        <span class="mat-chevron">▼</span>
-      </button>
-      <div class="main-accord-body">
-        <div style="padding:0 24px;">
         <!-- 일정표 -->
-    <div class="schedule-label">📅 일정표</div>
+    <div class="schedule-label" style="margin-top:20px;">📅 일정표</div>
     <div class="sch-hint">👆 방문지 명칭을 선택하시면 상세 내용을 확인하실 수 있습니다.</div>
     <div class="sch-tab-bar" id="schTabBar" style="display:none;">
       <button class="sch-tab-btn d1 active" onclick="switchSchTab(1)">DAY 1</button>
@@ -2767,7 +2749,7 @@
             <div class="sch-time">오후</div>
             <div class="sch-item sch-item-clickable" onclick="openVP(1)"><div class="sch-num">#1</div><div class="sch-name">Future Era 6S매장</div><span class="sch-tag">로봇·자동화</span><div class="sch-sub">로봇 시연·체험</div></div>
             <div class="sch-item sch-item-clickable" onclick="openVP(2)"><div class="sch-num">#2</div><div class="sch-name">중정로봇</div><span class="sch-tag">로봇·자동화</span><div class="sch-sub">휴머노이드 로봇 실물 전시</div></div>
-            <div class="sch-wrapup">Daily Wrap-Up #1</div>
+            <div class="sch-wrapup" style="cursor:pointer;" onclick="openWrapupPopup()">Daily Wrap-Up #1 ↗</div>
           </div>
         </div>
 
@@ -2784,7 +2766,7 @@
             <div class="sch-item sch-item-clickable" onclick="openVP(4)"><div class="sch-num">#4</div><div class="sch-name">NIO House</div><span class="sch-tag">모빌리티·CX</span><div class="sch-sub">5D 시승·배터리 교체 체험</div></div>
             <div class="sch-item sch-item-clickable" onclick="openVP(5)"><div class="sch-num">#5</div><div class="sch-name">Upper Hills 전기차 매장</div><span class="sch-tag">모빌리티</span><div class="sch-sub">화웨이·샤오미·NIO·AVATR</div></div>
             <div class="sch-item sch-item-clickable" onclick="openVP(6)"><div class="sch-num">#6</div><div class="sch-name">메이탄 드론 배달</div><span class="sch-tag">물류·자동화</span><div class="sch-sub">도심 물류 자동화 현장</div></div>
-            <div class="sch-wrapup">Daily Wrap-Up #2</div>
+            <div class="sch-wrapup" style="cursor:pointer;" onclick="openWrapupPopup()">Daily Wrap-Up #2 ↗</div>
           </div>
         </div>
 
@@ -2802,7 +2784,7 @@
             <div class="sch-item sch-item-clickable" onclick="openVP(9)"><div class="sch-num">#9</div><div class="sch-name">심천개혁개방전시관</div><span class="sch-tag">역사</span><div class="sch-sub">역사 전시 관람</div></div>
             <div class="sch-item sch-item-clickable" onclick="openVP(10)"><div class="sch-num">#10</div><div class="sch-name">심천대학교</div><span class="sch-tag">인재·창업</span><div class="sch-sub">캠퍼스 방문 + 교수 특강</div></div>
             <div class="sch-item" style="border-left-color:var(--lg-red);"><div class="sch-name">🎓 수료식</div></div>
-            <div class="sch-wrapup-final">Capstone Session</div>
+            <div class="sch-wrapup-final" style="cursor:pointer;" onclick="openWrapupPopup()">Capstone Session ↗</div>
           </div>
         </div>
 
@@ -2821,110 +2803,12 @@
 
       </div>
     </div>
-  <div class="wrapup-section">
-    <div class="wrapup-label">🔄 Wrap-Up 세션 구조</div>
-    <div class="wrapup-card">
-      <div class="wrapup-card-header">Daily Wrap-Up &amp; Capstone Session</div>
-      <div class="wrapup-items">
-        <div class="wrapup-item">
-          <span class="wrapup-num">Wrap-Up #1</span>
-          <div class="wrapup-content">
-            <em>오늘 마주한 속도 중 우리의 상식을 깨뜨린 가장 놀라운 지점은?</em>
-          </div>
-        </div>
-        <div class="wrapup-item">
-          <span class="wrapup-num">Wrap-Up #2</span>
-          <div class="wrapup-content">
-            <em>'플랫폼이 하드웨어를 통제하는' 패턴이 LG전자 어느 사업에 가장 먼저 도달할 것인가?</em>
-          </div>
-        </div>
-        <div class="wrapup-item">
-          <span class="wrapup-num">Capstone</span>
-          <div class="wrapup-content">
-            <strong>인사이트 통합·비즈니스 적용 토론 및 수료식</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   </div>
         
     </div>
 
-    <!-- ⑤ 관찰 미션 체크리스트 -->
-    <div class="main-accord-item" id="mac-4">
-      <button class="main-accord-trigger" onclick="toggleMAC('mac-4')">
-        <div class="mat-icon-wrap">✅</div>
-        <div class="mat-texts">
-          <div class="mat-title">관찰 미션 체크리스트</div>
-          <div class="mat-sub">현장 확인 항목 10개</div>
-        </div>
-        <span class="mat-chevron">▼</span>
-      </button>
-      <div class="main-accord-body">
-        <div style="padding:0 24px 8px;">
-          <!-- ── 관찰 미션 체크리스트 ── -->
-  <div class="section" style="padding-top:28px;">
-    <div class="section-header">
-      <div class="section-icon-wrap">✅</div>
-      <h2 class="section-title">관찰 미션 체크리스트</h2>
-    </div>
-          <div class="cl-intro" style="margin-bottom:10px;">각 방문지에서 관찰 미션(팩트 확인)과 통찰 미션(LG 연결 사고)을 수행합니다.</div>
-          <!-- 관찰미션 진행률 바 -->
-          <div class="progress-wrap" style="padding:14px 0 10px;background:transparent;border-bottom:none;margin-bottom:4px;">
-            <div class="progress-header">
-              <span class="progress-title">🎯 관찰 미션 진행률</span>
-              <span class="progress-fraction" id="cl-prog-frac">0 / 10</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="cl-prog-bar" style="width:0%"></div>
-            </div>
-            <div class="progress-sub" id="cl-prog-sub">체크박스를 클릭하여 완료 여부를 기록하세요.</div>
-          </div>
-
-    <div class="cl-tab-bar" id="clTabBar" style="display:none;">
-      <button class="cl-tab-btn d1 active" onclick="switchClTab(0)">DAY 1</button>
-      <button class="cl-tab-btn d2" onclick="switchClTab(1)">DAY 2</button>
-      <button class="cl-tab-btn d3" onclick="switchClTab(2)">DAY 3</button>
-    </div>
-
-    <div class="cl-group">
-      <div class="cl-day-bar cl-d1">DAY 1 · 4/23 (목)</div>
-      <div class="cl-items">
-        <div class="cl-item" id="cl-1" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-1">✓</div><div class="cl-text"><span class="cl-num">#1</span><span class="cl-venue">Future Era</span>LG 서비스 로봇과 유사한 모델의 <strong>가격과 최대 가동 시간</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(1)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-2" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-2">✓</div><div class="cl-text"><span class="cl-num">#2</span><span class="cl-venue">중정로봇</span>로봇의 반복 정밀도·구동 속도 확인, <strong>LG 라인 대비 우위 사양 1가지</strong> 기록</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(2)">상세 미션 ↗</button></div>
-      </div>
-    </div>
-
-    <div class="cl-group">
-      <div class="cl-day-bar cl-d2">DAY 2 · 4/24 (금)</div>
-      <div class="cl-items">
-        <div class="cl-item" id="cl-3" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-3">✓</div><div class="cl-text"><span class="cl-num">#3</span><span class="cl-venue">BYD</span>대시보드·시트 마감 확인, <strong>BYD 자체 로고 부품 종류 수</strong> 파악</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(3)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-4" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-4">✓</div><div class="cl-text"><span class="cl-num">#4</span><span class="cl-venue">NIO House</span>배터리 교체 실제 소요 시간 측정, <strong>카페·도서관 이용자 수</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(4)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-5" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-5">✓</div><div class="cl-text"><span class="cl-num">#5</span><span class="cl-venue">Upper Hills</span>IT 브랜드 매장 내 전기차 <strong>인포테인먼트 OS 반응 속도</strong> 비교</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(5)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-6" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-6">✓</div><div class="cl-text"><span class="cl-num">#6</span><span class="cl-venue">메이탄</span>드론 물품 하차 정확한 소요 시간과 <strong>배송 가능 무게</strong> 질문</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(6)">상세 미션 ↗</button></div>
-      </div>
-    </div>
-
-    <div class="cl-group">
-      <div class="cl-day-bar cl-d3">DAY 3 · 4/25 (토)</div>
-      <div class="cl-items">
-        <div class="cl-item" id="cl-7" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-7">✓</div><div class="cl-text"><span class="cl-num">#7</span><span class="cl-venue">화창베이</span>우리 제품 핵심 모듈과 유사한 부품 <strong>현장 구입 가능 여부 및 가격</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(7)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-8" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-8">✓</div><div class="cl-text"><span class="cl-num">#8</span><span class="cl-venue">징동전기</span>로컬 브랜드 중 <strong>LG 대비 우위 포인트 3가지</strong> 발굴</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(8)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-9" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-9">✓</div><div class="cl-text"><span class="cl-num">#9</span><span class="cl-venue">심천개혁개방전시관</span>40년 변모의 <strong>결정적 변곡점 정책·사건 3가지</strong> 메모</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(9)">상세 미션 ↗</button></div>
-        <div class="cl-item" id="cl-10" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-10">✓</div><div class="cl-text"><span class="cl-num">#10</span><span class="cl-venue">심천대학교</span>교내 연구 과제와 <strong>기업 사업 과제의 연결 구조</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(10)">상세 미션 ↗</button></div>
-      </div>
-    </div>
-  </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- ⑥ 기이수자 인사이트 -->
     <div class="main-accord-item" id="mac-5">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-5')">
         <div class="mat-icon-wrap">💡</div>
@@ -2937,16 +2821,21 @@
       <div class="main-accord-body">
         <div style="padding:0 24px 16px;">
 
-          <!-- 도입 안내 -->
+          <!-- 참고 안내 -->
           <div class="think-intro-box">
-            <div class="think-notice blue">
-              <strong>💡 기이수자 인터뷰에서 공통으로 나온 말</strong><br>
-              "현장에 가면 질문의 수준이 달라집니다. 미리 고민하고 간 사람과 그렇지 않은 사람의 차이는 현장에서 바로 드러납니다."
-            </div>
             <div class="think-notice amber">
               <strong>📌 참고 안내</strong><br>
               아래 인터뷰는 '25년 기이수자들의 심천 현장 방문 후 소감을 발췌한 것입니다. '25년과 '26년의 방문지는 일부 달라졌지만, 같은 고민을 안고 현장을 다녀온 우리 임원들이 무엇을 보고 느꼈는지를 미리 참고하시면 이번 방문을 더욱 깊이 있게 준비하는 데 도움이 됩니다.
             </div>
+          </div>
+
+          <!-- 마무리 인터뷰 -->
+          <div class="think-outro">
+            <div class="think-outro-title">기이수자 인터뷰에서 — 현장이 바꾼 것들</div>
+            <blockquote class="think-outro-quote">"벤치마킹 이후 실제 중국 업체 미팅을 5곳 진행했습니다. 미팅할 때 질문의 수준이 확실히 달라집니다. 이게 얼마나 얇으면 성능이 나냐, 원가가 얼마냐 — 이런 현실적인 질문들이 나오기 시작했습니다."</blockquote>
+            <blockquote class="think-outro-quote">"중국산 JDM은 원가가 48% 싸고 품질이 좀 떨어질 거라는 생각을 했는데, 직접 보니까 똑같습니다."</blockquote>
+            <blockquote class="think-outro-quote">"거기 있는 분들도 저와 비슷한 고민을 하시는 분들이라, 그 과정에서 다른 분들 듣는 게 나한테 많이 도움이 됐습니다. 유사 분야끼리 함께할 때 현실적인 고민을 나누며 실질적인 답을 찾는 효과가 컸습니다."</blockquote>
+            <div class="think-outro-note">📎 위 인터뷰는 '25년 기이수자를 대상으로 진행한 사전 인터뷰의 실제 코멘트를 발췌한 것입니다.</div>
           </div>
 
           <div class="think-cards-grid">
@@ -3066,20 +2955,84 @@
 
           </div><!-- think-cards-grid -->
 
-          <!-- 마무리 인터뷰 -->
-          <div class="think-outro">
-            <div class="think-outro-title">기이수자 인터뷰에서 — 현장이 바꾼 것들</div>
-            <blockquote class="think-outro-quote">"벤치마킹 이후 실제 중국 업체 미팅을 5곳 진행했습니다. 미팅할 때 질문의 수준이 확실히 달라집니다. 이게 얼마나 얇으면 성능이 나냐, 원가가 얼마냐 — 이런 현실적인 질문들이 나오기 시작했습니다."</blockquote>
-            <blockquote class="think-outro-quote">"중국산 JDM은 원가가 48% 싸고 품질이 좀 떨어질 거라는 생각을 했는데, 직접 보니까 똑같습니다."</blockquote>
-            <blockquote class="think-outro-quote">"거기 있는 분들도 저와 비슷한 고민을 하시는 분들이라, 그 과정에서 다른 분들 듣는 게 나한테 많이 도움이 됐습니다. 유사 분야끼리 함께할 때 현실적인 고민을 나누며 실질적인 답을 찾는 효과가 컸습니다."</blockquote>
-            <div class="think-outro-note">📎 위 인터뷰는 '25년 기이수자를 대상으로 진행한 사전 인터뷰의 실제 코멘트를 발췌한 것입니다.</div>
+          <!-- 공통으로 나온 말 -->
+          <div class="think-intro-box" style="margin-top:16px;">
+            <div class="think-notice blue">
+              <strong>💡 기이수자 인터뷰에서 공통으로 나온 말</strong><br>
+              "현장에 가면 질문의 수준이 달라집니다. 미리 고민하고 간 사람과 그렇지 않은 사람의 차이는 현장에서 바로 드러납니다."
+            </div>
           </div>
 
         </div>
       </div>
     </div>
 
-    <!-- ⑤ 사전 Needs Survey -->
+
+
+    <!-- ⑤ 관찰 미션 체크리스트 -->
+    <div class="main-accord-item" id="mac-4">
+      <button class="main-accord-trigger" onclick="toggleMAC('mac-4')">
+        <div class="mat-icon-wrap">✅</div>
+        <div class="mat-texts">
+          <div class="mat-title">관찰 미션 체크리스트</div>
+          <div class="mat-sub">현장 확인 항목 10개</div>
+        </div>
+        <span class="mat-chevron">▼</span>
+      </button>
+      <div class="main-accord-body">
+        <div style="padding:0 24px 8px;">
+          <!-- ── 관찰 미션 체크리스트 ── -->
+  <div class="section" style="padding-top:8px;">
+          <div class="cl-intro" style="margin-bottom:10px;">각 방문지에서 관찰 미션(팩트 확인)과 통찰 미션(LG 연결 사고)을 수행합니다.</div>
+          <!-- 관찰미션 진행률 바 -->
+          <div class="progress-wrap" style="padding:14px 0 10px;background:transparent;border-bottom:none;margin-bottom:4px;">
+            <div class="progress-header">
+              <span class="progress-title">🎯 관찰 미션 진행률</span>
+              <span class="progress-fraction" id="cl-prog-frac">0 / 10</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="cl-prog-bar" style="width:0%"></div>
+            </div>
+            <div class="progress-sub" id="cl-prog-sub">체크박스를 클릭하여 완료 여부를 기록하세요.</div>
+          </div>
+
+    <div class="cl-tab-bar" id="clTabBar" style="display:none;">
+      <button class="cl-tab-btn d1 active" onclick="switchClTab(0)">DAY 1</button>
+      <button class="cl-tab-btn d2" onclick="switchClTab(1)">DAY 2</button>
+      <button class="cl-tab-btn d3" onclick="switchClTab(2)">DAY 3</button>
+    </div>
+
+    <div class="cl-group">
+      <div class="cl-day-bar cl-d1">DAY 1 · 4/23 (목)</div>
+      <div class="cl-items">
+        <div class="cl-item" id="cl-1" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-1">✓</div><div class="cl-text"><span class="cl-num">#1</span><span class="cl-venue">Future Era</span>LG 서비스 로봇과 유사한 모델의 <strong>가격과 최대 가동 시간</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(1)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-2" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-2">✓</div><div class="cl-text"><span class="cl-num">#2</span><span class="cl-venue">중정로봇</span>로봇의 반복 정밀도·구동 속도 확인, <strong>LG 라인 대비 우위 사양 1가지</strong> 기록</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(2)">상세 미션 ↗</button></div>
+      </div>
+    </div>
+
+    <div class="cl-group">
+      <div class="cl-day-bar cl-d2">DAY 2 · 4/24 (금)</div>
+      <div class="cl-items">
+        <div class="cl-item" id="cl-3" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-3">✓</div><div class="cl-text"><span class="cl-num">#3</span><span class="cl-venue">BYD</span>대시보드·시트 마감 확인, <strong>BYD 자체 로고 부품 종류 수</strong> 파악</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(3)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-4" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-4">✓</div><div class="cl-text"><span class="cl-num">#4</span><span class="cl-venue">NIO House</span>배터리 교체 실제 소요 시간 측정, <strong>카페·도서관 이용자 수</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(4)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-5" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-5">✓</div><div class="cl-text"><span class="cl-num">#5</span><span class="cl-venue">Upper Hills</span>IT 브랜드 매장 내 전기차 <strong>인포테인먼트 OS 반응 속도</strong> 비교</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(5)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-6" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-6">✓</div><div class="cl-text"><span class="cl-num">#6</span><span class="cl-venue">메이탄</span>드론 물품 하차 정확한 소요 시간과 <strong>배송 가능 무게</strong> 질문</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(6)">상세 미션 ↗</button></div>
+      </div>
+    </div>
+
+    <div class="cl-group">
+      <div class="cl-day-bar cl-d3">DAY 3 · 4/25 (토)</div>
+      <div class="cl-items">
+        <div class="cl-item" id="cl-7" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-7">✓</div><div class="cl-text"><span class="cl-num">#7</span><span class="cl-venue">화창베이</span>우리 제품 핵심 모듈과 유사한 부품 <strong>현장 구입 가능 여부 및 가격</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(7)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-8" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-8">✓</div><div class="cl-text"><span class="cl-num">#8</span><span class="cl-venue">징동전기</span>로컬 브랜드 중 <strong>LG 대비 우위 포인트 3가지</strong> 발굴</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(8)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-9" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-9">✓</div><div class="cl-text"><span class="cl-num">#9</span><span class="cl-venue">심천개혁개방전시관</span>40년 변모의 <strong>결정적 변곡점 정책·사건 3가지</strong> 메모</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(9)">상세 미션 ↗</button></div>
+        <div class="cl-item" id="cl-10" style="-webkit-user-select:none;user-select:none;cursor:default;"><div class="cl-cb" id="cl-cb-10">✓</div><div class="cl-text"><span class="cl-num">#10</span><span class="cl-venue">심천대학교</span>교내 연구 과제와 <strong>기업 사업 과제의 연결 구조</strong> 확인</div><button class="cl-detail-btn" onclick="event.stopPropagation();openDM(10)">상세 미션 ↗</button></div>
+      </div>
+    </div>
+  </div>
+        </div>
+      </div>
+    </div>
     <div class="main-accord-item" id="mac-3">
       <button class="main-accord-trigger" onclick="toggleMAC('mac-3')">
         <div class="mat-icon-wrap">📝</div>
@@ -3092,10 +3045,7 @@
       <div class="main-accord-body">
         <!-- ── 설문 ── -->
   <div class="section" style="padding-top:24px;">
-    <div class="section-header">
-      <div class="section-icon-wrap">📝</div>
-      <h2 class="section-title">사전 Needs Survey</h2>
-    </div>
+
 
     <div class="survey-card">
       <div class="s-icon">📋</div>
@@ -3131,7 +3081,62 @@
 
 </div>
 
-  <!-- ── PDF 뷰어 드로어 ── -->
+  <!-- ── Wrap-Up 팝업 ── -->
+<div id="wrapupOverlay" onclick="closeWrapupPopup()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9500;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;"></div>
+<div id="wrapupPopup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);width:100%;max-width:480px;background:#fff;border-radius:18px;z-index:9501;box-shadow:0 24px 60px rgba(0,0,0,0.25);overflow:hidden;opacity:0;transition:all 0.22s cubic-bezier(0.34,1.3,0.64,1);">
+  <div style="background:#1a1a2e;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <div style="color:#fff;font-size:15px;font-weight:800;">Daily Wrap-Up &amp; Capstone Session</div>
+      <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:2px;">매일 저녁 진행되는 성찰 세션</div>
+    </div>
+    <button onclick="closeWrapupPopup()" style="background:rgba(255,255,255,0.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+  </div>
+  <div style="padding:18px 20px 22px;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;">
+        <span style="flex-shrink:0;font-size:14px;font-weight:800;color:#fff;background:var(--lg-red);padding:4px 10px;border-radius:20px;width:130px;text-align:center;box-sizing:border-box;">Wrap-Up #1</span>
+        <div style="font-size:14px;color:#6b7280;line-height:1.65;font-style:italic;">오늘 마주한 속도 중 우리의 상식을 깨뜨린 가장 놀라운 지점은?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;">
+        <span style="flex-shrink:0;font-size:14px;font-weight:800;color:#fff;background:var(--lg-red);padding:4px 10px;border-radius:20px;width:130px;text-align:center;box-sizing:border-box;">Wrap-Up #2</span>
+        <div style="font-size:14px;color:#6b7280;line-height:1.65;font-style:italic;">'플랫폼이 하드웨어를 통제하는' 패턴이 LG전자 어느 사업에 가장 먼저 도달할 것인가?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #f9c6d2;border-radius:10px;background:#fdf2f5;">
+        <span style="flex-shrink:0;font-size:14px;font-weight:800;color:#fff;background:var(--lg-red);padding:4px 10px;border-radius:20px;width:130px;text-align:center;box-sizing:border-box;">Capstone</span>
+        <div style="font-size:14px;color:#7a0026;line-height:1.65;font-weight:600;">인사이트 통합·비즈니스 적용 토론 및 수료식</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openWrapupPopup() {
+  var overlay = document.getElementById('wrapupOverlay');
+  var popup = document.getElementById('wrapupPopup');
+  overlay.style.display = 'flex';
+  popup.style.display = 'block';
+  requestAnimationFrame(function() {
+    popup.style.opacity = '1';
+    popup.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+  document.body.style.overflow = 'hidden';
+}
+function closeWrapupPopup() {
+  var popup = document.getElementById('wrapupPopup');
+  popup.style.opacity = '0';
+  popup.style.transform = 'translate(-50%,-50%) scale(0.95)';
+  setTimeout(function() {
+    document.getElementById('wrapupOverlay').style.display = 'none';
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 200);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeWrapupPopup();
+});
+</script>
+
+<!-- ── PDF 뷰어 드로어 ── -->
 <div id="pdfDrawerOverlay" onclick="closePdfViewer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9000;backdrop-filter:blur(3px);"></div>
 <div id="pdfDrawer" style="position:fixed;top:0;right:0;width:50vw;max-width:50vw;height:100vh;background:#fff;z-index:9001;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,0.2);transform:translateX(100%);transition:transform 0.25s ease-out;">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#1a1a2e;flex-shrink:0;">
@@ -4540,7 +4545,7 @@ document.addEventListener('keydown', function(e) {
   window.addEventListener('scroll', function() {
     var tabbar = document.getElementById('navTabbar');
     var offset = tabbar ? tabbar.offsetHeight + 20 : 60;
-    var macs = ['mac-6','mac-0','mac-1','mac-2','mac-4','mac-5','mac-3'];
+    var macs = ['mac-6','mac-0','mac-2','mac-5','mac-4','mac-3'];
     var active = null;
     for (var i = 0; i < macs.length; i++) {
       var el = document.getElementById(macs[i]);
