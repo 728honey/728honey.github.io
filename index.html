@@ -2338,9 +2338,10 @@
         <button class="prep-tab" onclick="switchPrep(1)">💳 결제·환율</button>
         <button class="prep-tab" onclick="switchPrep(2)">📱 Alipay 등록 방법</button>
         <button class="prep-tab" onclick="switchPrep(3)">📚 필수 과정 수강</button>
-        <button class="prep-tab" onclick="switchPrep(4)">✈ 공항 수속 안내</button>
-        <button class="prep-tab" onclick="switchPrep(5)">🏨 호텔 정보</button>
-        <button class="prep-tab" onclick="switchPrep(6)">🛂 입국 신고서</button>
+        <button class="prep-tab" onclick="switchPrep(4)">✈ 출장품의</button>
+        <button class="prep-tab" onclick="switchPrep(5)">🛫 공항 수속 안내</button>
+        <button class="prep-tab" onclick="switchPrep(6)">🏨 호텔 정보</button>
+        <button class="prep-tab" onclick="switchPrep(7)">🛂 입국 신고서</button>
       </div>
       <button class="prep-arrow" id="prepArrowRight" onclick="scrollPrepTabs(1)" aria-label="다음">›</button>
     </div>
@@ -2541,13 +2542,46 @@
         <button class="prep-next-btn" onclick="switchPrep(2)">← 이전: Alipay 등록</button>
         <div class="prep-check-bar-right">
           <button class="prep-check-btn" id="prep-chk-3" onclick="togglePrepCheck(3)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(4)">다음: 공항 수속 안내 →</button>
+          <button class="prep-next-btn" onclick="switchPrep(4)">다음: 출장품의 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 출장품의 -->
+    <div class="prep-panel" id="prep-4">
+      <div class="weather-notice" style="background:#f0f4ff;border-color:#2563eb;color:#1e3a8a;">
+        출장품의는 개별로 진행하시기 바랍니다. 항공편과 숙소는 아래와 같이 예약 완료되어 있습니다.
+      </div>
+
+      <div class="baggage-section-title" style="margin-top:14px;">✈ 항공 정보</div>
+      <table class="prep-table">
+        <thead><tr><th>구분</th><th>항공편</th><th>일정</th></tr></thead>
+        <tbody>
+          <tr><td>출발</td><td>KE835</td><td>4/23(목) 인천T2 08:40 → 심천 11:45</td></tr>
+          <tr><td>귀국</td><td>KE836</td><td>4/26(일) 심천 12:45 → 인천T2 17:35</td></tr>
+        </tbody>
+      </table>
+
+      <div class="baggage-section-title" style="margin-top:14px;">🏨 숙소 정보</div>
+      <table class="prep-table">
+        <thead><tr><th>항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>호텔명</td><td>더 랭함 호텔 선전 (The Langham Hotel, Shenzhen)</td></tr>
+          <tr><td>주소</td><td>7888 Shennan Boulevard, Futian District, Shenzhen, Guangdong, China</td></tr>
+        </tbody>
+      </table>
+
+      <div class="prep-check-bar">
+        <button class="prep-next-btn" onclick="switchPrep(3)">← 이전: 필수 과정 수강</button>
+        <div class="prep-check-bar-right">
+          <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(5)">다음: 공항 수속 안내 →</button>
         </div>
       </div>
     </div>
 
     <!-- ⑤ 공항 수속 안내 -->
-    <div class="prep-panel" id="prep-4">
+    <div class="prep-panel" id="prep-5">
       <div class="baggage-section-title">공항 수속 안내 (대한항공 기준) <span style="color:var(--lg-red);font-size:13px;font-weight:700;margin-left:10px;">여권 잔여 유효기간 6개월 이상 확인 필수</span></div>
       <table class="airport-table">
         <thead><tr><th>시간</th><th>일정</th><th>안내</th></tr></thead>
@@ -2586,16 +2620,16 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(3)">← 이전: 필수 과정 수강</button>
+        <button class="prep-next-btn" onclick="switchPrep(4)">← 이전: 필수 과정 수강</button>
         <div class="prep-check-bar-right">
-          <button class="prep-check-btn" id="prep-chk-4" onclick="togglePrepCheck(4)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(5)">다음: 호텔 정보 →</button>
+          <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(6)">다음: 호텔 정보 →</button>
         </div>
       </div>
     </div>
 
     <!-- ⑥ 호텔 정보 -->
-    <div class="prep-panel" id="prep-5">
+    <div class="prep-panel" id="prep-6">
       <div class="hotel-header">
         <div class="hotel-name">더 랭함 호텔 심천</div>
         <div class="hotel-name-en">The Langham Hotel, Shenzhen</div>
@@ -2613,20 +2647,20 @@
       </div>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(4)">← 이전: 공항 수속 안내</button>
+        <button class="prep-next-btn" onclick="switchPrep(5)">← 이전: 공항 수속 안내</button>
         <div class="prep-check-bar-right">
-          <button class="prep-check-btn" id="prep-chk-5" onclick="togglePrepCheck(5)"><span class="check-icon">☑</span> 확인 완료</button>
-          <button class="prep-next-btn" onclick="switchPrep(6)">다음: 입국 신고서 →</button>
+          <button class="prep-check-btn" id="prep-chk-6" onclick="togglePrepCheck(6)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-next-btn" onclick="switchPrep(7)">다음: 입국 신고서 →</button>
         </div>
       </div>
     </div>
 
     <!-- ⑦ 입국 신고서 -->
-    <div class="prep-panel" id="prep-6">
+    <div class="prep-panel" id="prep-7">
       <div class="imm-notice" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
         <div>
           <strong>중국 입국 신고서 온라인 사전 작성 안내</strong><br>
-          중국 국가이민관리국(NIA) 공식 웹사이트에서 입국 전 사전 작성이 가능합니다. 아래 정보를 참고하여 작성하여 주시기 바랍니다.
+          입국신고서는 출발 하루 전에 별도 메일로 안내됩니다. (출국 하루 전 작성) 중국 국가이민관리국(NIA) 공식 웹사이트에서 입국 전 사전 작성이 가능합니다. 아래 정보를 참고하여 작성하여 주시기 바랍니다.
         </div>
         <a href="https://s.nia.gov.cn/ArrivalCardFillingPC/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;background:var(--lg-red);color:#fff;font-size:14px;font-weight:700;padding:10px 18px;border-radius:8px;text-decoration:none;box-shadow:0 3px 10px rgba(165,0,52,0.22);white-space:nowrap;flex-shrink:0;">🌐 바로가기 →</a>
       </div>
@@ -2663,9 +2697,9 @@
       </table>
     
       <div class="prep-check-bar">
-        <button class="prep-next-btn" onclick="switchPrep(5)">← 이전: 호텔 정보</button>
+        <button class="prep-next-btn" onclick="switchPrep(6)">← 이전: 호텔 정보</button>
         <div class="prep-check-bar-right">
-          <button class="prep-check-btn" id="prep-chk-6" onclick="togglePrepCheck(6)"><span class="check-icon">☑</span> 확인 완료</button>
+          <button class="prep-check-btn" id="prep-chk-7" onclick="togglePrepCheck(7)"><span class="check-icon">☑</span> 확인 완료</button>
         </div>
       </div>
     </div>
@@ -4385,7 +4419,7 @@ document.addEventListener('keydown', function(e) {
   }
 
   function restorePrepChecks() {
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 8; i++) {
       try {
         var val = localStorage.getItem('prep-chk-' + i);
         if (val === '1') {
@@ -4406,7 +4440,7 @@ document.addEventListener('keydown', function(e) {
 
   /* ══ 진행률 바 ══ */
   function updatePrepProgress() {
-    var total = 7, done = 0;
+    var total = 8, done = 0;
     for (var k in prepChecked) { if (prepChecked[k]) done++; }
     var frac = document.getElementById('prep-prog-frac');
     var bar  = document.getElementById('prep-prog-bar');
