@@ -3144,7 +3144,8 @@
 <script>
 function openPdfViewer(url, title) {
   document.getElementById('pdfDrawerTitle').textContent = title;
-  document.getElementById('pdfFrame').src = url;
+  var viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(url) + '&embedded=true';
+  document.getElementById('pdfFrame').src = viewerUrl;
   document.getElementById('pdfDrawerOverlay').style.display = 'block';
   document.getElementById('pdfDrawer').style.transform = 'translateX(0)';
   document.body.style.overflow = 'hidden';
